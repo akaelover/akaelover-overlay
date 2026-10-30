@@ -1,0 +1,231 @@
+--- a/cbus/boardx2.c
++++ b/cbus/boardx2.c
+@@ -13,14 +13,14 @@
+ #include <sound/soundrom.h>
+ #include <sound/s98.h>
+ 
+-static void IOOUTCALL opn_o088(UINT port, REG8 dat)
++static void IOOUTCALL opn_o088(UINT port, UINT dat)
+ {
+ 	g_opna[1].s.addrl = dat;
+ 	g_opna[1].s.data = dat;
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL opn_o08a(UINT port, REG8 dat)
++static void IOOUTCALL opn_o08a(UINT port, UINT dat)
+ {
+ 	g_opna[1].s.data = dat;
+ 	S98_put(NORMAL2608_2, g_opna[1].s.addrl, dat);
+@@ -29,13 +29,13 @@
+ 	(void)port;
+ }
+ 
+-static REG8 IOINPCALL opn_i088(UINT port)
++static UINT IOINPCALL opn_i088(UINT port)
+ {
+ 	(void)port;
+ 	return g_opna[1].s.status;
+ }
+ 
+-static REG8 IOINPCALL opn_i08a(UINT port)
++static UINT IOINPCALL opn_i08a(UINT port)
+ {
+ 	UINT nAddress;
+ 
+@@ -56,14 +56,14 @@
+ 
+ // ----
+ 
+-static void IOOUTCALL opna_o188(UINT port, REG8 dat)
++static void IOOUTCALL opna_o188(UINT port, UINT dat)
+ {
+ 	g_opna[0].s.addrl = dat;
+ 	g_opna[0].s.data = dat;
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL opna_o18a(UINT port, REG8 dat)
++static void IOOUTCALL opna_o18a(UINT port, UINT dat)
+ {
+ 	g_opna[0].s.data = dat;
+ 	opna_writeRegister(&g_opna[0], g_opna[0].s.addrl, dat);
+@@ -71,7 +71,7 @@
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL opna_o18c(UINT port, REG8 dat)
++static void IOOUTCALL opna_o18c(UINT port, UINT dat)
+ {
+ 	if (g_opna[0].s.extend)
+ 	{
+@@ -82,7 +82,7 @@
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL opna_o18e(UINT port, REG8 dat)
++static void IOOUTCALL opna_o18e(UINT port, UINT dat)
+ {
+ 	if (g_opna[0].s.extend)
+ 	{
+@@ -93,13 +93,13 @@
+ 	(void)port;
+ }
+ 
+-static REG8 IOINPCALL opna_i188(UINT port)
++static UINT IOINPCALL opna_i188(UINT port)
+ {
+ 	(void)port;
+ 	return g_opna[0].s.status;
+ }
+ 
+-static REG8 IOINPCALL opna_i18a(UINT port)
++static UINT IOINPCALL opna_i18a(UINT port)
+ {
+ 	UINT nAddress;
+ 
+@@ -121,7 +121,7 @@
+ 	return g_opna[0].s.data;
+ }
+ 
+-static REG8 IOINPCALL opna_i18c(UINT port)
++static UINT IOINPCALL opna_i18c(UINT port)
+ {
+ 	if (g_opna[0].s.extend)
+ 	{
+@@ -132,7 +132,7 @@
+ 	return 0xff;
+ }
+ 
+-static REG8 IOINPCALL opna_i18e(UINT port)
++static UINT IOINPCALL opna_i18e(UINT port)
+ {
+ 	UINT nAddress;
+ 
+--- a/cbus/boardspb.c
++++ b/cbus/boardspb.c
+@@ -14,7 +14,7 @@
+ 
+ static int opna_idx = 0;
+ 
+-static void IOOUTCALL spb_o188(UINT port, REG8 dat)
++static void IOOUTCALL spb_o188(UINT port, UINT dat)
+ {
+ 	g_opna[opna_idx].s.addrl = dat;
+ //	g_opna[opna_idx].s.data = dat;
+@@ -22,7 +22,7 @@
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL spb_o18a(UINT port, REG8 dat)
++static void IOOUTCALL spb_o18a(UINT port, UINT dat)
+ {
+ //	g_opna[opna_idx].s.data = dat;
+ 	opna_writeRegister(&g_opna[opna_idx], g_opna[opna_idx].s.addrl, dat);
+@@ -30,14 +30,14 @@
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL spb_o18c(UINT port, REG8 dat)
++static void IOOUTCALL spb_o18c(UINT port, UINT dat)
+ {
+ 	g_opna[opna_idx].s.addrh = dat;
+ //	g_opna[opna_idx].s.data = dat;
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL spb_o18e(UINT port, REG8 dat)
++static void IOOUTCALL spb_o18e(UINT port, UINT dat)
+ {
+ //	g_opna[opna_idx].s.data = dat;
+ 	opna_writeExtendedRegister(&g_opna[opna_idx], g_opna[opna_idx].s.addrh, dat);
+@@ -45,14 +45,14 @@
+ 	(void)port;
+ }
+ 
+-static REG8 IOINPCALL spb_i188(UINT port)
++static UINT IOINPCALL spb_i188(UINT port)
+ {
+ 	(void)port;
+ 
+ 	return opna_readExtendedStatus(&g_opna[opna_idx]);
+ }
+ 
+-static REG8 IOINPCALL spb_i18a(UINT port)
++static UINT IOINPCALL spb_i18a(UINT port)
+ {
+ 	UINT nAddress;
+ 
+@@ -66,7 +66,7 @@
+ 	return opna_readRegister(&g_opna[opna_idx], nAddress);
+ }
+ 
+-static REG8 IOINPCALL spb_i18e(UINT port)
++static UINT IOINPCALL spb_i18e(UINT port)
+ {
+ 	UINT nAddress;
+ 
+@@ -83,14 +83,14 @@
+ 
+ // ---- spark board
+ 
+-static void IOOUTCALL spr_o588(UINT port, REG8 dat)
++static void IOOUTCALL spr_o588(UINT port, UINT dat)
+ {
+ 	g_opna[1].s.addrl = dat;
+ //	g_opna[1].s.data = dat;
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL spr_o58a(UINT port, REG8 dat)
++static void IOOUTCALL spr_o58a(UINT port, UINT dat)
+ {
+ //	g_opna[1].s.data = dat;
+ 	S98_put(NORMAL2608_2, g_opna[1].s.addrl, dat);
+@@ -99,14 +99,14 @@
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL spr_o58c(UINT port, REG8 dat)
++static void IOOUTCALL spr_o58c(UINT port, UINT dat)
+ {
+ 	g_opna[1].s.addrh = dat;
+ //	g_opna[1].s.data = dat;
+ 	(void)port;
+ }
+ 
+-static void IOOUTCALL spr_o58e(UINT port, REG8 dat)
++static void IOOUTCALL spr_o58e(UINT port, UINT dat)
+ {
+ //	g_opna[1].s.data = dat;
+ 	opna_writeExtendedRegister(&g_opna[1], g_opna[1].s.addrh, dat);
+@@ -114,25 +114,25 @@
+ 	(void)port;
+ }
+ 
+-static REG8 IOINPCALL spr_i588(UINT port)
++static UINT IOINPCALL spr_i588(UINT port)
+ {
+ 	(void)port;
+ 	return g_opna[0].s.status;
+ }
+ 
+-static REG8 IOINPCALL spr_i58a(UINT port)
++static UINT IOINPCALL spr_i58a(UINT port)
+ {
+ 	(void)port;
+ 	return opna_readRegister(&g_opna[1], g_opna[1].s.addrl);
+ }
+ 
+-static REG8 IOINPCALL spr_i58c(UINT port)
++static UINT IOINPCALL spr_i58c(UINT port)
+ {
+ 	(void)port;
+ 	return (g_opna[0].s.status & 3);
+ }
+ 
+-static REG8 IOINPCALL spr_i58e(UINT port)
++static UINT IOINPCALL spr_i58e(UINT port)
+ {
+ 	(void)port;
+ 	return opna_read3438ExtRegister(&g_opna[1], g_opna[1].s.addrl);

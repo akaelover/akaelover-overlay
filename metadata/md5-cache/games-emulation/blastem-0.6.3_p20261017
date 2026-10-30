@@ -1,0 +1,15 @@
+BDEPEND=|| ( dev-lang/python:3.14 dev-lang/python:3.13 ) dev-build/make
+DEFINED_PHASES=compile install prepare setup
+DEPEND=media-libs/libsdl2[joystick,opengl?] virtual/zlib opengl? ( virtual/opengl ) wayland? ( dev-libs/wayland ) X? ( x11-libs/libX11 x11-libs/libXext )
+DESCRIPTION=Fast and accurate Sega 8-bit and 16-bit emulator
+EAPI=8
+HOMEPAGE=https://www.retrodev.com/blastem/
+INHERIT=toolchain-funcs desktop python-any-r1
+IUSE=opengl wayland X
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=media-libs/libsdl2[joystick,opengl?] virtual/zlib opengl? ( virtual/opengl ) wayland? ( dev-libs/wayland ) X? ( x11-libs/libX11 x11-libs/libXext )
+SLOT=0
+SRC_URI=https://www.retrodev.com/repos/blastem/archive/2b2a182f4522.tar.gz -> blastem-0.6.3_p20261017.tar.gz
+_eclasses_=toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	desktop	e447b5f77146d69797e9f03ff177f3f1	eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	python-utils-r1	025367880f07ae6444e6035a49db0dab	python-any-r1	891415dfe39ad9b41b461f2b86354af0
+_md5_=dbdc97dedf04a4bc72f9f799f95481aa
