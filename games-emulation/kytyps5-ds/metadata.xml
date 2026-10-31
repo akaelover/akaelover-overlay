@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="game-devices-udev">Install udev rules for game controllers (DualSense over hidraw, etc.)</flag>
+		<flag name="lto">Build with ThinLTO, like the upstream Linux package</flag>
+		<flag name="pgo">Use the PGO profile shipped by upstream (tools/pgo/kyty-linux.profdata)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">chenxiao07/KytyPS5</remote-id>
+	</upstream>
+</pkgmetadata>
