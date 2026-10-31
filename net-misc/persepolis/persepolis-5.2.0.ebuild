@@ -40,7 +40,7 @@ src_prepare() {
 	# en Portage eso lo hace RDEPEND y además intenta ejecutar ffmpeg
 	sed -i '/add_install_script/d' meson.build || die
 
-	xdg_src_prepare
+	default
 }
 
 src_install() {

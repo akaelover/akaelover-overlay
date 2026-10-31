@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="launcher">Build the Qt 6 graphical launcher (kyty_launcher)</flag>
+		<flag name="game-devices-udev">Install udev rules for game controllers (DualSense over hidraw, etc.)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">KytyPS5/KytyPS5</remote-id>
+		<bugs-to>https://github.com/KytyPS5/KytyPS5/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
