@@ -60,12 +60,9 @@ src_configure() {
 	export VCPKG_DISABLE_METRICS=1
 
 	export PKG_CONFIG=/usr/bin/pkg-config
-	mycmakeargs+=(
-		-DCMAKE_TOOLCHAIN_FILE="${S}/dependencies/vcpkg/scripts/buildsystems/vcpkg.cmake"
-		-DVCPKG_CHAINLOAD_TOOLCHAIN_FILE="${BUILD_DIR}/gentoo_toolchain.cmake"
-		-DBUILD_SHARED_LIBS=OFF
-		-DPKG_CONFIG_EXECUTABLE=/usr/bin/pkg-config
-	)
+	# MYCMAKEARGS a proposito: el eclass lo pone al final, asi el toolchain de
+	# vcpkg (que encadena el de Gentoo) se impone. pkgcheck avisa, pero es intencionado.
+	local -x MYCMAKEARGS="${MYCMAKEARGS} -DCMAKE_TOOLCHAIN_FILE=${S}/dependencies/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_CHAINLOAD_TOOLCHAIN_FILE=${BUILD_DIR}/gentoo_toolchain.cmake -DBUILD_SHARED_LIBS=OFF -DPKG_CONFIG_EXECUTABLE=/usr/bin/pkg-config"
 	cmake_src_configure
 }
 
