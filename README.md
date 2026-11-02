@@ -1,4 +1,4 @@
-# gentoo-local
+# akaelover
 
 Personal Gentoo overlay by Juan Pedro ([@akaelover](https://github.com/akaelover)): emulators
 (many of them live `-9999` ebuilds), the [Crafting Apps](https://github.com/storytold) suite and
@@ -9,8 +9,8 @@ a few desktop tools.
 With `app-eselect/eselect-repository`:
 
 ```sh
-eselect repository add gentoo-local git https://github.com/akaelover/gentoo-local.git
-emaint sync -r gentoo-local
+eselect repository add akaelover git https://github.com/akaelover/gentoo-local.git
+emaint sync -r akaelover
 ```
 
 `www-client/ungoogled-chromium` uses an eclass from the
