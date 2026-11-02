@@ -4,12 +4,12 @@
 EAPI=8
 
 LLVM_COMPAT=( {20..23} )
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 CMAKE_BUILD_TYPE="Release"
 
 inherit cmake desktop flag-o-matic git-r3 llvm-r2 python-any-r1 toolchain-funcs xdg
 
-DESCRIPTION="Emulador de Xbox 360 (fork Canary de Xenia)"
+DESCRIPTION="Xbox 360 emulator (Canary fork of Xenia)"
 HOMEPAGE="https://xenia.jp/ https://github.com/xenia-canary/xenia-canary"
 EGIT_REPO_URI="https://github.com/xenia-canary/xenia-canary.git"
 # Fuera los submodulos que solo se usan en Windows/ARM o para lint.

@@ -862,7 +862,7 @@ RUST_MIN_VER="1.95.0"
 
 inherit cargo desktop optfeature shell-completion xdg
 
-DESCRIPTION="Open-source clean-room image editor with PSD support (Photoshop-style), written in Rust"
+DESCRIPTION="Clean-room image editor with PSD support (Photoshop-style), in Rust"
 HOMEPAGE="
 	https://getartcraft.com/apps/photocraft
 	https://github.com/storytold/photocraft
@@ -873,7 +873,6 @@ SRC_URI="
 "
 
 LICENSE="|| ( Apache-2.0 MIT ) OFL-1.1"
-# PROVISIONAL: run `pycargoebuild -i photocraft-${PV}.ebuild` to get the exact list.
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0

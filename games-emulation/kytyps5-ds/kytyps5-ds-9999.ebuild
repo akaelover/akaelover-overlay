@@ -4,9 +4,9 @@
 EAPI=8
 
 LLVM_COMPAT=( {18..23} )
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit cmake desktop flag-o-matic git-r3 llvm-r1 python-any-r1
+inherit cmake desktop flag-o-matic git-r3 llvm-r2 python-any-r1
 
 DESCRIPTION="KytyPS5 fork tuned for Demon's Souls (PPSA01341, 1.005/1.007), by chenxiao07"
 HOMEPAGE="https://github.com/chenxiao07/KytyPS5"
@@ -116,7 +116,7 @@ _kyty_git_commit() {
 pkg_setup() {
 	# Pone /usr/lib/llvm/${LLVM_SLOT}/bin primero en el PATH: clang y ld.lld
 	# del mismo LLVM (ThinLTO no admite mezclar versiones).
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	python-any-r1_pkg_setup
 }
 

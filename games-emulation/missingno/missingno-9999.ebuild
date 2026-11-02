@@ -7,7 +7,7 @@ RUST_MIN_VER="1.88.0"
 
 inherit cargo desktop git-r3 udev xdg
 
-DESCRIPTION="Emulador y depurador multisistema en Rust (GB, GBC, Atari 2600, SG-1000, ColecoVision)"
+DESCRIPTION="Multi-system emulator and debugger in Rust (GB/GBC, Atari 2600, SG-1000...)"
 HOMEPAGE="https://github.com/ajoneil/missingno"
 EGIT_REPO_URI="https://github.com/ajoneil/missingno.git"
 # El submodulo missingno-gamedb es obligatorio (build.rs empaqueta la base de

@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 CMAKE_BUILD_TYPE="Release"
 
 inherit cmake git-r3 python-any-r1 xdg
 
-DESCRIPTION="Emulador experimental de PlayStation Vita"
+DESCRIPTION="Experimental PlayStation Vita emulator"
 HOMEPAGE="https://vita3k.org/ https://github.com/Vita3K/Vita3K"
 EGIT_REPO_URI="https://github.com/Vita3K/Vita3K.git"
 # Boost solo se usa en cabeceras: se toma la del sistema y no se baja

@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake git-r3 xdg
 
-DESCRIPTION="Nintendo 3DS emulator (fork unificado de Citra y PabloMK7's Citra)"
+DESCRIPTION="Nintendo 3DS emulator (unified fork of Citra and PabloMK7's Citra)"
 HOMEPAGE="https://azahar-emu.org/ https://github.com/azahar-emu/azahar"
 EGIT_REPO_URI="https://github.com/azahar-emu/azahar.git"
 if [[ ${PV} != 9999 ]]; then

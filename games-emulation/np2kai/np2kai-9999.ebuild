@@ -10,8 +10,6 @@ EGIT_REPO_URI="https://github.com/piepacker/np2kai.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="
 	media-libs/libsdl2

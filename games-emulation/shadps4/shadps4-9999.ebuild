@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake git-r3
 
-DESCRIPTION="PlayStation 4 emulator (core, sin GUI)"
+DESCRIPTION="PlayStation 4 emulator (core, without GUI)"
 HOMEPAGE="https://shadps4.net https://github.com/shadps4-emu/shadPS4"
 EGIT_REPO_URI="https://github.com/shadps4-emu/shadPS4.git"
 # Todos los submódulos salvo el Mesa para macOS (KosmicKrisp), que es enorme

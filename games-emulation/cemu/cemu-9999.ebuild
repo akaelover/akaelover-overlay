@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake desktop xdg git-r3
 
-DESCRIPTION="Cemu Wii U emulator - latest GitHub main"
+DESCRIPTION="Nintendo Wii U emulator"
 HOMEPAGE="https://github.com/cemu-project/Cemu"
 
 EGIT_REPO_URI="https://github.com/cemu-project/Cemu.git"
@@ -14,9 +14,9 @@ EGIT_SUBMODULES=( "*" )
 
 LICENSE="MPL-2.0"
 SLOT="0"
+IUSE="+bluez +cubeb discord +sdl +vulkan +wayland"
+# vcpkg descarga sus dependencias durante la compilación
 RESTRICT="network-sandbox"
-KEYWORDS=""
-IUSE="+cubeb discord +sdl +vulkan +wayland +bluez"
 
 RDEPEND="
 	dev-libs/wayland

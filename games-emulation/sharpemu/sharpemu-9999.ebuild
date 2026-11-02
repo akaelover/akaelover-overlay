@@ -5,9 +5,9 @@ EAPI=8
 
 DOTNET_PKG_COMPAT="10.0"
 
-inherit desktop dotnet-pkg-base git-r3 wrapper xdg
+inherit desktop dotnet-pkg-base git-r3 multiprocessing wrapper xdg
 
-DESCRIPTION="Experimental PlayStation 5 emulator (with PS4 backward compatibility) written in C#"
+DESCRIPTION="Experimental PlayStation 5 emulator (with PS4 compatibility) written in C#"
 HOMEPAGE="https://sharpemu.app/ https://github.com/sharpemu/sharpemu"
 EGIT_REPO_URI="https://github.com/sharpemu/sharpemu.git"
 

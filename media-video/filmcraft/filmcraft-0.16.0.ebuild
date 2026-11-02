@@ -703,7 +703,6 @@ CRATES="
 "
 
 # Sin ".git": cargo.eclass monta la URL de descarga como <uri>/archive/<commit>.
-# Los forks de egui/winit se redirigen a mano en src_prepare.
 declare -A GIT_CRATES=(
 	[craft-docpath]='https://github.com/storytold/craft-libs;c5a1cbfb5f9049f9270955caffb5bee5997aebf7;craft-libs-%commit%/crates/docpath'
 	[craft-fonts-build]='https://github.com/storytold/craft-libs;c5a1cbfb5f9049f9270955caffb5bee5997aebf7;craft-libs-%commit%/crates/fonts-build'
@@ -724,10 +723,6 @@ declare -A GIT_CRATES=(
 	[winit]='https://github.com/storytold/winit;a517b3846ee8457d84ee4975110bfda6797c44dc;winit-%commit%'
 )
 
-# Forks de egui/winit que el proyecto mete con [patch.crates-io]
-EGUI_COMMIT="6d518fc799681571963842f95b55a6b68431b15a"
-WINIT_COMMIT="a517b3846ee8457d84ee4975110bfda6797c44dc"
-
 RUST_MIN_VER="1.95.0"
 
 inherit cargo desktop optfeature xdg
@@ -743,7 +738,6 @@ SRC_URI="
 "
 
 LICENSE="|| ( Apache-2.0 MIT ) OFL-1.1"
-# PROVISIONAL: run `pycargoebuild -i filmcraft-${PV}.ebuild` to get the exact list.
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0
@@ -782,15 +776,36 @@ QA_FLAGS_IGNORED="usr/bin/.*"
 src_prepare() {
 	default
 
-	# cargo no encadena parches: [patch.crates-io] apunta a git, y el parche
-	# que cargo.eclass genera para esas URLs git no se aplicaría. Redirigimos
-	# directamente a las fuentes ya descomprimidas.
-	sed -i -E \
-		-e "/^\[patch\.crates-io\]/,\$ s|^([A-Za-z0-9_-]+) = \{ git = \"https://github.com/storytold/egui\.git\", rev = \"${EGUI_COMMIT}\" \}|\1 = { path = \"${WORKDIR}/egui-${EGUI_COMMIT}/crates/\1\" }|" \
-		-e "/^\[patch\.crates-io\]/,\$ s|^winit = \{ git = \"https://github.com/storytold/winit\.git\", rev = \"${WINIT_COMMIT}\" \}|winit = { path = \"${WORKDIR}/winit-${WINIT_COMMIT}\" }|" \
-		Cargo.toml || die
-	if grep -qE 'git = "https://github.com/storytold/(egui|winit)\.git"' Cargo.toml; then
-		die "No se han podido redirigir los forks de egui/winit en Cargo.toml"
+	# El proyecto redirige crates (forks de egui/winit, hayro, krilla...) con
+	# [patch.crates-io] a repos git. Cargo no aplica el parche de cargo.eclass
+	# sobre esas fuentes, así que cada entrada git pasa a apuntar a la crate ya
+	# descomprimida en ${WORKDIR}; las que no se usan se quitan.
+	local line name url rev dir in_patch=0
+	while IFS= read -r line || [[ -n ${line} ]]; do
+		if [[ ${line} == \[* ]]; then
+			[[ ${line} == "[patch.crates-io]" ]] && in_patch=1 || in_patch=0
+		elif (( in_patch )) && [[ ${line} =~ ^([A-Za-z0-9_-]+)\ *=.*git\ *=\ *\"([^\"]+)\".*rev\ *=\ *\"([0-9a-f]+)\" ]]; then
+			name=${BASH_REMATCH[1]}
+			url=${BASH_REMATCH[2]%.git}
+			rev=${BASH_REMATCH[3]}
+			dir=$(grep -rlx --include=Cargo.toml "name = \"${name}\"" \
+				"${WORKDIR}/${url##*/}-${rev}" 2>/dev/null \
+				| awk '{ print length, $0 }' | sort -n | head -n1 | cut -d' ' -f2-)
+			if [[ -n ${dir} ]]; then
+				line="${name} = { path = \"${dir%/Cargo.toml}\" }"
+			elif grep -qx "name = \"${name}\"" Cargo.lock; then
+				die "No se encuentra la crate ${name} (${url}@${rev})"
+			else
+				einfo "Quitando parche sin usar: ${name}"
+				continue
+			fi
+		fi
+		printf '%s\n' "${line}"
+	done < Cargo.toml > "${T}/Cargo.toml" || die
+	mv "${T}/Cargo.toml" Cargo.toml || die
+
+	if sed -n '/^\[patch\.crates-io\]/,/^\[/p' Cargo.toml | grep -q 'git *='; then
+		die "Quedan parches git sin redirigir en Cargo.toml"
 	fi
 }
 

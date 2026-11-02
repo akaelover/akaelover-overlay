@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake xdg
 
-DESCRIPTION="Emulador multisistema centrado en la precision (sucesor de higan)"
+DESCRIPTION="Multi-system emulator focused on accuracy (successor to higan)"
 HOMEPAGE="https://ares-emu.net/ https://github.com/ares-emulator/ares"
 SRC_URI="https://github.com/ares-emulator/ares/releases/download/v${PV}/ares-source.tar.gz -> ${P}-source.tar.gz"
 # El tarball se genera con "git archive" sin prefijo: no lleva carpeta raiz.

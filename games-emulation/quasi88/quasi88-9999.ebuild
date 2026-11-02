@@ -13,8 +13,6 @@ EGIT_REPO_URI="https://github.com/bubio/QUASI88.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="
 	media-libs/libsdl2

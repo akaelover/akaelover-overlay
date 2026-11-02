@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop wrapper xdg
 
-DESCRIPTION="SoftMaker Office NX: TextMaker, PlanMaker y Presentations (binario)"
+DESCRIPTION="SoftMaker Office NX: TextMaker, PlanMaker and Presentations (binary)"
 HOMEPAGE="https://www.softmaker.com/en/products/softmaker-office"
 SRC_URI="https://www.softmaker.net/down/${P}-amd64.tgz"
 

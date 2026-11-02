@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 inherit cmake desktop flag-o-matic git-r3 python-any-r1 toolchain-funcs xdg
 

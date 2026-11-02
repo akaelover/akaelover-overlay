@@ -9,10 +9,11 @@ DESCRIPTION="Nintendo Switch emulator forked from yuzu"
 HOMEPAGE="https://eden-emulator.github.io/"
 EGIT_REPO_URI="https://git.eden-emu.dev/eden-emu/eden.git"
 
-RESTRICT="network-sandbox"
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="discord +qt6 sdl3 +game-devices-udev"
+IUSE="discord +game-devices-udev +qt6 sdl3"
+# El proyecto descarga dependencias durante la compilación
+RESTRICT="network-sandbox"
 
 RDEPEND="
 	dev-libs/boost:=

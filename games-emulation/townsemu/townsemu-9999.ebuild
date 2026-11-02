@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake git-r3
 
-DESCRIPTION="An emulator of legendary Fujitsu FM TOWNS computer (Tsugaru)"
+DESCRIPTION="Emulator of the Fujitsu FM TOWNS computer (Tsugaru)"
 HOMEPAGE="https://github.com/captainys/TOWNSEMU"
 EGIT_REPO_URI="https://github.com/captainys/TOWNSEMU.git"
 

@@ -4,12 +4,12 @@
 EAPI=8
 
 LLVM_COMPAT=( {20..23} )
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 CMAKE_BUILD_TYPE="Release"
 
 inherit cmake desktop flag-o-matic git-r3 llvm-r2 python-any-r1 toolchain-funcs xdg
 
-DESCRIPTION="Emulador de Xbox 360 (fork Edge de Xenia, con build nativa para Linux)"
+DESCRIPTION="Xbox 360 emulator (Edge fork of Xenia, with a native Linux build)"
 HOMEPAGE="https://github.com/has207/xenia-edge"
 EGIT_REPO_URI="https://github.com/has207/xenia-edge.git"
 EGIT_BRANCH="edge"

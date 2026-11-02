@@ -541,7 +541,6 @@ SRC_URI="
 "
 
 LICENSE="|| ( Apache-2.0 MIT ) OFL-1.1"
-# PROVISIONAL: run `pycargoebuild -i texturecraft-${PV}.ebuild` to get the exact list.
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 ISC MIT

@@ -17,7 +17,6 @@ SRC_URI="
 	https://github.com/subhra74/xdm/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	jbr? (
 		amd64? ( https://cache-redirector.jetbrains.com/intellij-jbr/jbr-${JBR_PV}-linux-x64-${JBR_BUILD}.tar.gz )
-		arm64? ( https://cache-redirector.jetbrains.com/intellij-jbr/jbr-${JBR_PV}-linux-aarch64-${JBR_BUILD}.tar.gz )
 	)
 "
 S="${WORKDIR}/xdm-${PV}"
@@ -26,7 +25,7 @@ S="${WORKDIR}/xdm-${PV}"
 # kotlinx-serialization, Conscrypt): Apache-2.0; JBR: GPL-2 con classpath exception
 LICENSE="GPL-3 Apache-2.0 jbr? ( GPL-2-with-classpath-exception )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64"
 IUSE="+jbr"
 
 # Maven descarga de Maven Central los plugins y las dependencias (Kotlin,
@@ -66,7 +65,6 @@ src_unpack() {
 		local jbr_arch
 		case ${ARCH} in
 			amd64) jbr_arch=x64 ;;
-			arm64) jbr_arch=aarch64 ;;
 			*) die "JBR no disponible para ${ARCH}" ;;
 		esac
 		unpack jbr-${JBR_PV}-linux-${jbr_arch}-${JBR_BUILD}.tar.gz

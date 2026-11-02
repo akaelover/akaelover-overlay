@@ -3,11 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_COMPAT=( python3_{12..15} )
 
-inherit git-r3 python-any-r1 xdg
+inherit desktop git-r3 python-any-r1 xdg
 
-DESCRIPTION="Emulador de la Xbox original (basado en QEMU)"
+DESCRIPTION="Original Xbox emulator (based on QEMU)"
 HOMEPAGE="https://xemu.app/ https://github.com/xemu-project/xemu"
 EGIT_REPO_URI="https://github.com/xemu-project/xemu.git"
 # Los submodulos de git son las ROMs de QEMU (seabios, edk2, u-boot...),
@@ -121,15 +121,12 @@ src_compile() {
 src_install() {
 	newbin build/qemu-system-i386 xemu
 
-	insinto /usr/share/applications
-	doins ui/xemu.desktop
+	domenu ui/xemu.desktop
 	local s
 	for s in 16 24 32 48 64 128 256 512; do
-		insinto /usr/share/icons/hicolor/${s}x${s}/apps
-		newins ui/icons/xemu_${s}x${s}.png xemu.png
+		newicon -s ${s} ui/icons/xemu_${s}x${s}.png xemu.png
 	done
-	insinto /usr/share/icons/hicolor/scalable/apps
-	doins ui/icons/xemu.svg
+	doicon -s scalable ui/icons/xemu.svg
 	insinto /usr/share/metainfo
 	doins xemu.metainfo.xml
 

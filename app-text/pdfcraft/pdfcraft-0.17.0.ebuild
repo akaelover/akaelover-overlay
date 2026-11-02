@@ -773,7 +773,6 @@ SRC_URI="
 "
 
 LICENSE="|| ( Apache-2.0 MIT ) OFL-1.1"
-# PROVISIONAL: run `pycargoebuild -i pdfcraft-${PV}.ebuild` to get the exact list.
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 BSD-2 BSD Boost-1.0 CDLA-Permissive-2.0 ISC MIT

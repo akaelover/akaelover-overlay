@@ -7,7 +7,7 @@ DOTNET_PKG_COMPAT="10.0"
 
 inherit desktop dotnet-pkg-base git-r3
 
-DESCRIPTION="Emulador multisistema orientado a TAS (TASVideos)"
+DESCRIPTION="Multi-system emulator aimed at tool-assisted speedruns (TASVideos)"
 HOMEPAGE="https://tasvideos.org/BizHawk https://github.com/TASEmulators/BizHawk"
 EGIT_REPO_URI="https://github.com/TASEmulators/BizHawk.git"
 # Los nucleos nativos para Linux ya vienen precompilados en Assets/dll/,
