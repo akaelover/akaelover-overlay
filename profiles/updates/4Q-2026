@@ -1,0 +1,3 @@
+move app-emulation/townsemu-git games-emulation/townsemu
+move games-emulation/cemu-git games-emulation/cemu
+move games-emulation/eden-git games-emulation/eden
