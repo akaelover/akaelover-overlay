@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Juan Pedro</name>
+		<email>juanpedro@tuta.io</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">storytold/wordcraft</remote-id>
+		<bugs-to>https://github.com/storytold/wordcraft/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

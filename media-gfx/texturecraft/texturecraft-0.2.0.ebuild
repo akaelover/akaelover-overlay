@@ -1,0 +1,641 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	accesskit@0.25.2
+	accesskit_atspi_common@0.21.1
+	accesskit_consumer@0.39.2
+	accesskit_ios@0.2.2
+	accesskit_macos@0.27.2
+	accesskit_unix@0.24.1
+	accesskit_windows@0.35.2
+	accesskit_winit@0.34.2
+	adler2@2.0.1
+	ahash@0.8.12
+	allocator-api2@0.2.21
+	ambient-authority@0.0.2
+	android-activity@0.6.1
+	android-properties@0.2.2
+	android_system_properties@0.1.6
+	arbitrary@1.5.0
+	arboard@3.6.1
+	arrayvec@0.7.8
+	as-raw-xcb-connection@1.0.1
+	ash@0.38.0+1.3.281
+	async-broadcast@0.7.2
+	async-channel@2.5.0
+	async-executor@1.14.0
+	async-io@2.6.0
+	async-lock@3.4.2
+	async-process@2.5.0
+	async-recursion@1.2.0
+	async-signal@0.2.14
+	async-task@4.7.1
+	async-trait@0.1.92
+	atomic-waker@1.1.2
+	atspi-common@0.13.0
+	atspi-proxies@0.13.0
+	atspi@0.29.0
+	autocfg@1.5.1
+	base64@0.13.1
+	base64@0.22.1
+	bit-set@0.10.0
+	bit-vec@0.9.1
+	bit_field@0.10.3
+	bitflags@1.3.2
+	bitflags@2.13.2
+	block2@0.5.1
+	block2@0.6.2
+	blocking@1.7.0
+	bumpalo@3.20.3
+	bytemuck@1.25.2
+	bytemuck_derive@1.12.1
+	byteorder-lite@0.1.0
+	byteorder@1.5.0
+	bytes@1.12.1
+	calloop-wayland-source@0.3.0
+	calloop@0.13.0
+	cap-primitives@4.0.3
+	cap-std@4.0.3
+	cc@1.8.0
+	cfg-if@1.0.5
+	cfg_aliases@0.2.2
+	cgl@0.3.2
+	chrono@0.4.45
+	clipboard-win@5.4.1
+	cobs@0.3.0
+	codespan-reporting@0.13.1
+	color@0.3.3
+	combine@4.6.8
+	concurrent-queue@2.5.0
+	core-foundation-sys@0.8.7
+	core-foundation@0.9.4
+	core-graphics-types@0.1.3
+	core-graphics@0.23.2
+	crc32fast@1.5.2
+	crossbeam-deque@0.8.8
+	crossbeam-epoch@0.9.21
+	crossbeam-utils@0.8.23
+	crunchy@0.2.4
+	cursor-icon@1.2.0
+	darling@0.24.1
+	darling_core@0.24.1
+	darling_macro@0.24.1
+	derive_arbitrary@1.5.0
+	dispatch2@0.3.1
+	dispatch@0.2.0
+	displaydoc@0.2.7
+	dlib@0.5.3
+	document-features@0.2.12
+	downcast-rs@1.2.1
+	dpi@0.1.2
+	dyn-clone@1.0.20
+	either@1.19.0
+	endi@1.1.1
+	enumflags2@0.7.12
+	enumflags2_derive@0.7.12
+	enumn@0.1.14
+	equivalent@1.0.3
+	errno@0.3.14
+	error-code@3.4.0
+	euclid@0.22.14
+	event-listener-strategy@0.5.4
+	event-listener@5.4.2
+	exr@1.74.2
+	fastrand@2.5.0
+	fax@0.2.7
+	fdeflate@0.3.7
+	fearless_simd@0.4.1
+	find-msvc-tools@0.1.14
+	fixed_decimal@0.7.3
+	fixedbitset@0.5.7
+	flate2@1.1.10
+	foldhash@0.1.5
+	foldhash@0.2.0
+	font-types@0.12.7
+	foreign-types-macros@0.2.4
+	foreign-types-shared@0.3.1
+	foreign-types@0.5.0
+	fs-set-times@0.20.3
+	futures-channel@0.3.34
+	futures-core@0.3.34
+	futures-executor@0.3.34
+	futures-io@0.3.34
+	futures-lite@2.6.1
+	futures-macro@0.3.34
+	futures-sink@0.3.34
+	futures-task@0.3.34
+	futures-util@0.3.34
+	futures@0.3.34
+	gethostname@1.1.0
+	getrandom@0.3.4
+	getrandom@0.4.3
+	gl_generator@0.14.0
+	glam@0.15.2
+	glam@0.30.10
+	glifo@0.3.0
+	glow@0.17.0
+	gltf-derive@1.4.1
+	gltf-json@1.4.1
+	gltf@1.4.1
+	glutin-winit@0.5.0
+	glutin@0.32.3
+	glutin_egl_sys@0.7.1
+	glutin_glx_sys@0.6.1
+	glutin_wgl_sys@0.6.1
+	gpu-allocator@0.28.0
+	guillotiere@0.7.0
+	half@2.7.1
+	harfrust@0.12.0
+	hashbrown@0.15.5
+	hashbrown@0.16.1
+	hashbrown@0.17.1
+	hermit-abi@0.5.3
+	hex@0.4.3
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.65
+	icu_collections@2.3.0
+	icu_decimal@2.3.0
+	icu_locale_core@2.3.0
+	icu_locale_fallback@2.3.0
+	icu_locale_fallback_data@2.3.0
+	icu_normalizer@2.3.0
+	icu_normalizer_data@2.3.0
+	icu_pattern@0.5.1
+	icu_plurals@2.3.0
+	icu_properties@2.3.0
+	icu_properties_data@2.3.0
+	icu_provider@2.3.1
+	icu_provider_adapters@2.3.0
+	icu_provider_blob@2.3.0
+	ident_case@1.0.1
+	image-webp@0.2.4
+	image@0.25.10
+	indexmap@2.14.2
+	inflections@1.1.1
+	io-extras@0.19.0
+	io-lifetimes@2.0.4
+	io-lifetimes@3.0.1
+	ipnet@2.12.2
+	itertools@0.15.0
+	itoa@1.0.18
+	jni-macros@0.22.4
+	jni-sys-macros@0.4.1
+	jni-sys@0.3.1
+	jni-sys@0.4.1
+	jni@0.22.4
+	jobserver@0.1.35
+	js-sys@0.3.106
+	khronos-egl@6.0.0
+	khronos_api@3.1.0
+	kittest@0.5.0
+	kurbo@0.13.1
+	lazy_static@1.5.1
+	lebe@0.5.3
+	libc@0.2.190
+	libloading@0.8.9
+	libm@0.2.16
+	libredox@0.1.25
+	linebender_resource_handle@0.1.1
+	linux-raw-sys@0.12.1
+	linux-raw-sys@0.4.15
+	litemap@0.8.3
+	litrs@1.0.1
+	lock_api@0.4.14
+	log@0.4.34
+	lz4_flex@0.11.6
+	maybe-owned@0.3.4
+	memchr@2.8.3
+	memmap2@0.9.11
+	memoffset@0.9.1
+	mikktspace@0.3.0
+	miniz_oxide@0.8.9
+	miniz_oxide@0.9.1
+	mio@1.2.4
+	moxcms@0.8.1
+	naga-types@30.0.1
+	naga@30.0.1
+	ndk-context@0.1.1
+	ndk-sys@0.6.0+11769913
+	ndk@0.9.0
+	nohash-hasher@0.2.0
+	nom@8.0.0
+	num-complex@0.4.6
+	num-traits@0.2.19
+	num_enum@0.7.6
+	num_enum_derive@0.7.6
+	objc-sys@0.3.5
+	objc2-app-kit@0.2.2
+	objc2-app-kit@0.3.2
+	objc2-cloud-kit@0.2.2
+	objc2-contacts@0.2.2
+	objc2-core-data@0.2.2
+	objc2-core-foundation@0.3.2
+	objc2-core-graphics@0.3.2
+	objc2-core-image@0.2.2
+	objc2-core-location@0.2.2
+	objc2-encode@4.1.0
+	objc2-foundation@0.2.2
+	objc2-foundation@0.3.2
+	objc2-io-surface@0.3.2
+	objc2-link-presentation@0.2.2
+	objc2-metal@0.2.2
+	objc2-metal@0.3.2
+	objc2-quartz-core@0.2.2
+	objc2-quartz-core@0.3.2
+	objc2-symbols@0.2.2
+	objc2-ui-kit@0.2.2
+	objc2-ui-kit@0.3.2
+	objc2-uniform-type-identifiers@0.2.2
+	objc2-user-notifications@0.2.2
+	objc2@0.5.3
+	objc2@0.6.5
+	once_cell@1.21.4
+	orbclient@0.3.55
+	ordered-float@5.5.0
+	ordered-stream@0.2.0
+	os_pipe@1.2.3
+	parking@2.2.1
+	parking_lot@0.12.5
+	parking_lot_core@0.9.12
+	paste@1.0.15
+	pastey@0.2.3
+	peniko@0.6.1
+	percent-encoding@2.3.2
+	petgraph@0.8.3
+	phf@0.14.0
+	phf_generator@0.14.0
+	phf_macros@0.14.0
+	phf_shared@0.14.0
+	pin-project-internal@1.1.13
+	pin-project-lite@0.2.17
+	pin-project@1.1.13
+	piper@0.2.5
+	pkg-config@0.3.34
+	plain@0.2.3
+	png@0.18.1
+	polling@3.11.0
+	pollster@0.4.0
+	pollster@1.0.1
+	polycool@0.4.0
+	portable-atomic-util@0.2.8
+	portable-atomic@1.15.0
+	postcard@1.1.3
+	potential_utf@0.1.6
+	presser@0.3.1
+	proc-macro-crate@3.5.0
+	proc-macro2@1.0.107
+	profiling@1.0.18
+	pulp-wasm-simd-flag@0.1.1
+	pulp@0.22.3
+	pxfm@0.1.30
+	quick-error@2.0.1
+	quick-xml@0.41.0
+	quote@1.0.47
+	r-efi@5.3.0
+	r-efi@6.0.0
+	range-alloc@0.1.5
+	raw-cpuid@11.6.0
+	raw-window-handle@0.6.2
+	raw-window-metal@1.1.0
+	rayon-core@1.13.0
+	rayon@1.12.0
+	read-fonts@0.41.0
+	read-fonts@0.45.1
+	reborrow@0.5.5
+	redox_syscall@0.4.1
+	redox_syscall@0.5.18
+	redox_syscall@0.9.4
+	ref-cast-impl@1.0.27
+	ref-cast@1.0.27
+	renderdoc-sys@1.1.0
+	rfd@0.17.2
+	rmcp-macros@3.5.1
+	rmcp@3.5.1
+	ron@0.12.2
+	rustc-hash@1.1.0
+	rustc-hash@2.1.3
+	rustc_version@0.4.1
+	rustix-linux-procfs@0.1.1
+	rustix@0.38.44
+	rustix@1.1.5
+	rustversion@1.0.23
+	same-file@1.0.6
+	schemars@1.2.3
+	schemars_derive@1.2.3
+	scoped-tls@1.0.1
+	scopeguard@1.2.0
+	self_cell@1.3.0
+	semver@1.0.28
+	send_wrapper@0.6.0
+	serde@1.0.229
+	serde_core@1.0.229
+	serde_derive@1.0.229
+	serde_derive_internals@0.30.0
+	serde_json@1.0.154
+	serde_repr@0.1.21
+	serde_spanned@1.1.2
+	shlex@2.0.1
+	signal-hook-registry@1.4.8
+	simd-adler32@0.3.10
+	simd_cesu8@1.2.0
+	simdutf8@0.1.5
+	siphasher@1.0.4
+	skera@0.8.0
+	skrifa@0.44.0
+	skrifa@0.48.0
+	slab@0.4.12
+	slotmap@1.1.1
+	smallvec@1.16.3
+	smithay-client-toolkit@0.19.2
+	smol_str@0.2.2
+	socket2@0.6.5
+	spirv@0.4.0+sdk-1.4.341.0
+	stable_deref_trait@1.2.1
+	static_assertions@1.1.0
+	strsim@0.11.1
+	syn@2.0.119
+	syn@3.0.9
+	synstructure@0.14.0
+	sys-locale@0.3.2
+	tempfile@3.27.0
+	termcolor@1.4.1
+	thiserror-impl@1.0.69
+	thiserror-impl@2.0.21
+	thiserror@1.0.69
+	thiserror@2.0.21
+	tiff@0.11.3
+	tinystr@0.8.5
+	tobj@4.0.5
+	tokio-macros@2.7.2
+	tokio-stream@0.1.19
+	tokio-util@0.7.20
+	tokio@1.53.3
+	toml@1.1.8+spec-1.1.0
+	toml_datetime@1.1.2+spec-1.1.0
+	toml_edit@0.25.17+spec-1.1.0
+	toml_parser@1.1.5+spec-1.1.0
+	toml_writer@1.1.3+spec-1.1.0
+	tracing-attributes@0.1.31
+	tracing-core@0.1.36
+	tracing@0.1.44
+	tree_magic_mini@3.2.2
+	type-map@0.5.1
+	typeid@1.0.3
+	uds_windows@1.2.1
+	unicode-bidi@0.3.18
+	unicode-general-category@1.1.0
+	unicode-ident@1.0.27
+	unicode-properties@0.1.5
+	unicode-segmentation@1.13.3
+	unicode-width@0.2.2
+	urlencoding@2.1.3
+	utf16_iter@1.1.0
+	utf8_iter@1.1.0
+	utf_types@1.0.0
+	uuid@1.28.0
+	vello_common@0.2.0
+	vello_cpu@0.2.0
+	version_check@0.9.5
+	walkdir@2.5.0
+	wasi@0.11.1+wasi-snapshot-preview1
+	wasip2@1.0.4+wasi-0.2.12
+	wasm-bindgen-futures@0.4.79
+	wasm-bindgen-macro-support@0.2.129
+	wasm-bindgen-macro@0.2.129
+	wasm-bindgen-shared@0.2.129
+	wasm-bindgen@0.2.129
+	wayland-backend@0.3.17
+	wayland-client@0.31.15
+	wayland-csd-frame@0.3.0
+	wayland-cursor@0.31.14
+	wayland-protocols-plasma@0.3.12
+	wayland-protocols-wlr@0.3.12
+	wayland-protocols@0.32.13
+	wayland-scanner@0.31.11
+	wayland-sys@0.31.11
+	web-sys@0.3.106
+	web-time@1.1.0
+	weezl@0.1.12
+	wgpu-core-deps-apple@30.0.1
+	wgpu-core-deps-emscripten@30.0.1
+	wgpu-core-deps-wasm@30.0.1
+	wgpu-core-deps-windows-linux-android@30.0.1
+	wgpu-core@30.0.1
+	wgpu-hal@30.0.1
+	wgpu-naga-bridge@30.0.1
+	wgpu-types@30.0.1
+	wgpu@30.0.1
+	winapi-util@0.1.11
+	windows-collections@0.3.2
+	windows-core@0.62.2
+	windows-future@0.3.2
+	windows-implement@0.60.2
+	windows-interface@0.59.3
+	windows-link@0.2.1
+	windows-numerics@0.3.1
+	windows-registry@0.6.1
+	windows-result@0.4.1
+	windows-strings@0.5.1
+	windows-sys@0.52.0
+	windows-sys@0.59.0
+	windows-sys@0.60.2
+	windows-sys@0.61.2
+	windows-targets@0.52.6
+	windows-targets@0.53.5
+	windows-threading@0.2.1
+	windows@0.62.2
+	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_gnullvm@0.53.1
+	windows_aarch64_msvc@0.52.6
+	windows_aarch64_msvc@0.53.1
+	windows_i686_gnu@0.52.6
+	windows_i686_gnu@0.53.1
+	windows_i686_gnullvm@0.52.6
+	windows_i686_gnullvm@0.53.1
+	windows_i686_msvc@0.52.6
+	windows_i686_msvc@0.53.1
+	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnu@0.53.1
+	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_gnullvm@0.53.1
+	windows_x86_64_msvc@0.52.6
+	windows_x86_64_msvc@0.53.1
+	winnow@1.0.4
+	winresource@0.1.34
+	winsafe@0.0.29
+	winx@0.36.4
+	wit-bindgen@0.57.1
+	wl-clipboard-rs@0.9.5
+	write-fonts@0.54.1
+	write16@1.0.0
+	writeable@0.6.4
+	x11-dl@2.21.0
+	x11rb-protocol@0.13.2
+	x11rb@0.13.2
+	xcursor@0.3.11
+	xkbcommon-dl@0.4.2
+	xkeysym@0.2.1
+	xml-rs@0.8.29
+	yoke-derive@0.8.4
+	yoke@0.8.4
+	zbus-lockstep-macros@0.5.2
+	zbus-lockstep@0.5.2
+	zbus@5.19.0
+	zbus_macros@5.19.0
+	zbus_names@4.3.4
+	zbus_xml@5.2.1
+	zcheapstr@1.1.0
+	zerocopy-derive@0.8.63
+	zerocopy@0.8.63
+	zerofrom-derive@0.1.8
+	zerofrom@0.1.8
+	zerotrie@0.2.5
+	zerovec-derive@0.11.7
+	zerovec@0.11.9
+	zip@2.4.2
+	zlib-rs@0.6.8
+	zmij@1.0.23
+	zopfli@0.8.4
+	zune-core@0.5.3
+	zune-inflate@0.2.54
+	zune-jpeg@0.5.15
+	zvariant@5.15.0
+	zvariant_derive@5.15.0
+	zvariant_utils@4.2.0
+"
+
+# Sin ".git": cargo.eclass monta la URL de descarga como <uri>/archive/<commit>.
+declare -A GIT_CRATES=(
+	[craft-fonts-build]='https://github.com/storytold/craft-libs;f8f8829cc7be65d466d687dae381d1ca60e31242;craft-libs-%commit%/crates/fonts-build'
+	[craft-i18n]='https://github.com/storytold/craft-libs;f8f8829cc7be65d466d687dae381d1ca60e31242;craft-libs-%commit%/crates/i18n'
+	[craft-ui]='https://github.com/storytold/craft-libs;f8f8829cc7be65d466d687dae381d1ca60e31242;craft-libs-%commit%/crates/ui'
+	[craft-window]='https://github.com/storytold/craft-libs;f8f8829cc7be65d466d687dae381d1ca60e31242;craft-libs-%commit%/crates/window'
+	[ecolor]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/ecolor'
+	[eframe]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/eframe'
+	[egui-wgpu]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/egui-wgpu'
+	[egui-winit]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/egui-winit'
+	[egui]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/egui'
+	[egui_glow]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/egui_glow'
+	[egui_kittest]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/egui_kittest'
+	[emath]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/emath'
+	[epaint]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/epaint'
+	[epaint_default_fonts]='https://github.com/storytold/egui;6d518fc799681571963842f95b55a6b68431b15a;egui-%commit%/crates/epaint_default_fonts'
+	[winit]='https://github.com/storytold/winit;a517b3846ee8457d84ee4975110bfda6797c44dc;winit-%commit%'
+)
+
+RUST_MIN_VER="1.95.0"
+
+inherit cargo desktop optfeature xdg
+
+DESCRIPTION="PBR texture painting on 3D meshes (Substance Painter-style), written in Rust"
+HOMEPAGE="
+	https://getartcraft.com/apps/texturecraft
+	https://github.com/storytold/texturecraft
+"
+SRC_URI="
+	https://github.com/storytold/texturecraft/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	${CARGO_CRATE_URIS}
+"
+
+LICENSE="|| ( Apache-2.0 MIT ) OFL-1.1"
+# PROVISIONAL: run `pycargoebuild -i texturecraft-${PV}.ebuild` to get the exact list.
+# Dependent crate licenses
+LICENSE+="
+	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 ISC MIT
+	Unicode-3.0 ZLIB
+"
+SLOT="0"
+KEYWORDS="~amd64"
+# Los tests necesitan ficheros de prueba que no vienen en el tarball
+RESTRICT="test"
+
+DEPEND="
+	media-libs/fontconfig
+"
+# Ventanas (X11/Wayland) y GPU (Vulkan/EGL) se cargan con dlopen en tiempo
+# de ejecución, así que no aparecen como NEEDED: hay que listarlos a mano
+# (packaging/linux/nfpm.yaml del proyecto).
+RDEPEND="
+	${DEPEND}
+	dev-libs/wayland
+	x11-libs/libX11
+	x11-libs/libxcb:=
+	x11-libs/libXcursor
+	x11-libs/libXi
+	x11-libs/libxkbcommon[X]
+	|| (
+		media-libs/vulkan-loader
+		media-libs/libglvnd
+	)
+"
+BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	# El proyecto redirige crates (forks de egui/winit, hayro, krilla...) con
+	# [patch.crates-io] a repos git. Cargo no aplica el parche de cargo.eclass
+	# sobre esas fuentes, así que cada entrada git pasa a apuntar a la crate ya
+	# descomprimida en ${WORKDIR}; las que no se usan se quitan.
+	local line name url rev dir in_patch=0
+	while IFS= read -r line || [[ -n ${line} ]]; do
+		if [[ ${line} == \[* ]]; then
+			[[ ${line} == "[patch.crates-io]" ]] && in_patch=1 || in_patch=0
+		elif (( in_patch )) && [[ ${line} =~ ^([A-Za-z0-9_-]+)\ *=.*git\ *=\ *\"([^\"]+)\".*rev\ *=\ *\"([0-9a-f]+)\" ]]; then
+			name=${BASH_REMATCH[1]}
+			url=${BASH_REMATCH[2]%.git}
+			rev=${BASH_REMATCH[3]}
+			dir=$(grep -rlx --include=Cargo.toml "name = \"${name}\"" \
+				"${WORKDIR}/${url##*/}-${rev}" 2>/dev/null \
+				| awk '{ print length, $0 }' | sort -n | head -n1 | cut -d' ' -f2-)
+			if [[ -n ${dir} ]]; then
+				line="${name} = { path = \"${dir%/Cargo.toml}\" }"
+			elif grep -qx "name = \"${name}\"" Cargo.lock; then
+				die "No se encuentra la crate ${name} (${url}@${rev})"
+			else
+				einfo "Quitando parche sin usar: ${name}"
+				continue
+			fi
+		fi
+		printf '%s\n' "${line}"
+	done < Cargo.toml > "${T}/Cargo.toml" || die
+	mv "${T}/Cargo.toml" Cargo.toml || die
+
+	if sed -n '/^\[patch\.crates-io\]/,/^\[/p' Cargo.toml | grep -q 'git *='; then
+		die "Quedan parches git sin redirigir en Cargo.toml"
+	fi
+}
+
+src_compile() {
+	cargo_src_compile -p texturecraft -p texturecraft-cli --bins
+}
+
+src_install() {
+	dobin "$(cargo_target_dir)"/{texturecraft,texturecraft-cli}
+
+	local app_id=ai.storyteller.texturecraft
+	domenu packaging/linux/${app_id}.desktop
+
+	insinto /usr/share/mime/packages
+	newins packaging/linux/${app_id}.mime.xml ${app_id}.xml
+
+	sed -e "s/@VERSION@/${PV}/g" -e "s/@DATE@/2026-11-02/g" \
+		packaging/linux/${app_id}.metainfo.xml.in > "${T}"/${app_id}.metainfo.xml || die
+	insinto /usr/share/metainfo
+	doins "${T}"/${app_id}.metainfo.xml
+
+	insinto /usr/share/icons
+	doins -r assets/app-icon/hicolor
+
+	dodoc README.md NOTICE ATTRIBUTION.md
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "native file dialogs" sys-apps/xdg-desktop-portal
+	optfeature "Vulkan rendering on Mesa drivers" media-libs/mesa[vulkan]
+}

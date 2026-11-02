@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Juan Pedro</name>
+		<email>juanpedro@tuta.io</email>
+	</maintainer>
+	<use>
+		<flag name="voices">Natural Text to Speech voices (Kokoro-82M on the CPU, downloaded on first use)</flag>
+		<flag name="whisper">Speech-to-text transcription with Whisper on the CPU, with model downloads</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">storytold/filmcraft</remote-id>
+		<bugs-to>https://github.com/storytold/filmcraft/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

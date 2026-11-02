@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Juan Pedro</name>
+		<email>juanpedro@tuta.io</email>
+	</maintainer>
+	<use>
+		<flag name="server">Build figcraft-server, the self-hosted collaboration server (preview)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">storytold/figcraft</remote-id>
+		<bugs-to>https://github.com/storytold/figcraft/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
