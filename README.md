@@ -8,9 +8,9 @@ a few desktop tools.
 
 With `app-eselect/eselect-repository`:
 
-```sh
-eselect repository add akaelover git https://github.com/akaelover/gentoo-local.git
-emaint sync -r akaelover
+```shhttps://github.com/akaelover/akaelover-overlay/
+eselect repository add akaelover git https://github.com/akaelover/akaelover-overlay.git
+emaint sync -r akaelover-overlay
 ```
 
 `www-client/ungoogled-chromium` uses an eclass from the
