@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="discord">Enable Discord Rich Presence</flag>
+		<flag name="game-devices-udev">Install udev rules for game controllers (<pkg>games-util/game-device-udev-rules</pkg>)</flag>
+		<flag name="sdl3">Pull in <pkg>media-libs/libsdl3</pkg> as a runtime dependency</flag>
+	</use>
+</pkgmetadata>

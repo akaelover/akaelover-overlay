@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">xenia-canary/xenia-canary</remote-id>
+		<bugs-to>https://github.com/xenia-canary/xenia-canary/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

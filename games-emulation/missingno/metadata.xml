@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="nes">Include the Nintendo Entertainment System core</flag>
+		<flag name="sms">Include the Sega Master System core</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ajoneil/missingno</remote-id>
+		<bugs-to>https://github.com/ajoneil/missingno/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

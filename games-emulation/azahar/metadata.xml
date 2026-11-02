@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="cubeb">Enable the cubeb audio backend</flag>
+		<flag name="room">Build the multiplayer room server, also as a standalone binary</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">azahar-emu/azahar</remote-id>
+		<bugs-to>https://github.com/azahar-emu/azahar/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

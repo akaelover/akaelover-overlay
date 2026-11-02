@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="bluez">Enable Bluetooth controllers (Wii U and Wii remotes) through <pkg>net-wireless/bluez</pkg></flag>
+		<flag name="cubeb">Enable the cubeb audio backend</flag>
+		<flag name="discord">Enable Discord Rich Presence</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cemu-project/Cemu</remote-id>
+		<bugs-to>https://github.com/cemu-project/Cemu/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

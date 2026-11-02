@@ -5,8 +5,11 @@
 		<email>juanpedro@tuta.io</email>
 		<name>Juan Pedro</name>
 	</maintainer>
+	<use>
+		<flag name="jbr">Run with the bundled JetBrains Runtime, which has the native Wayland toolkit, instead of the system JRE</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">subhra74/xdm</remote-id>
-		<bug-tracker>https://github.com/subhra74/xdm/issues</bug-tracker>
+		<bugs-to>https://github.com/subhra74/xdm/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
