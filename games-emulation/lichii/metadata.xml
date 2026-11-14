@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>akaelover</name>
+	</maintainer>
+	<use>
+		<flag name="discord">Discord Rich Presence</flag>
+		<flag name="lto">Optimización en tiempo de enlazado (ENABLE_LTO; ThinLTO con clang)</flag>
+		<flag name="pgo">Compilar con clang y el perfil PGO de upstream (eglantine.profdata), como las builds -pgo oficiales</flag>
+		<flag name="udev">Reglas udev para acceder al giroscopio de los mandos</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zortos293/Lichii</remote-id>
+	</upstream>
+</pkgmetadata>
