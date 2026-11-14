@@ -725,7 +725,7 @@ declare -A GIT_CRATES=(
 
 RUST_MIN_VER="1.95.0"
 
-inherit cargo desktop optfeature xdg
+inherit cargo craft-gitdeps desktop optfeature xdg
 
 DESCRIPTION="Open-source video editor with GPU compositing, written in Rust"
 HOMEPAGE="
@@ -775,6 +775,7 @@ QA_FLAGS_IGNORED="usr/bin/.*"
 
 src_prepare() {
 	default
+	craft_redirect_git_deps
 
 	# El proyecto redirige crates (forks de egui/winit, hayro, krilla...) con
 	# [patch.crates-io] a repos git. Cargo no aplica el parche de cargo.eclass

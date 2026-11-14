@@ -611,7 +611,7 @@ declare -A GIT_CRATES=(
 
 RUST_MIN_VER="1.90.0"
 
-inherit cargo desktop optfeature shell-completion xdg
+inherit cargo craft-gitdeps desktop optfeature shell-completion xdg
 
 DESCRIPTION="Audio and MIDI recording, editing and mixing (Pro Tools-style), written in Rust"
 HOMEPAGE="
@@ -658,6 +658,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
+	craft_redirect_git_deps
 
 	# El proyecto redirige crates (forks de egui/winit, hayro, krilla...) con
 	# [patch.crates-io] a repos git. Cargo no aplica el parche de cargo.eclass

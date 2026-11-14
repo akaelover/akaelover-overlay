@@ -40,17 +40,17 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 
 | Package | Version | Description |
 |---|---|---|
-| `deckcraft` | 0.18.0 | Presentation editor with .pptx support, written in Rust |
-| `designcraft` | 0.20.0 | Desktop publishing and page layout (InDesign-style), written in Rust |
-| `gridcraft` | 0.19.0 | Spreadsheet with native .xlsx support, written in Rust |
+| `deckcraft` | 0.18.1 | Presentation editor with .pptx support, written in Rust |
+| `designcraft` | 0.20.1 | Desktop publishing and page layout (InDesign-style), written in Rust |
+| `gridcraft` | 0.19.1 | Spreadsheet with native .xlsx support, written in Rust |
 | `softmaker-office-nx` | 1504 | SoftMaker Office NX: TextMaker, PlanMaker and Presentations (binary) |
-| `wordcraft` | 0.17.0 | Word processor with native .docx support, written in Rust |
+| `wordcraft` | 0.18.1 | Word processor with native .docx support, written in Rust |
 
 ### app-text
 
 | Package | Version | Description |
 |---|---|---|
-| `pdfcraft` | 0.21.0 | PDF reader, organizer and editor (Acrobat-style), written in Rust |
+| `pdfcraft` | 0.21.1 | PDF reader, organizer and editor (Acrobat-style), written in Rust |
 
 ### games-emulation
 
@@ -67,7 +67,7 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 | `jgenesis` | 9999 | Multi-console emulator (Genesis/CD/32X, SMS/GG, NES, SNES, GB/GBC, GBA, PCE), in Rust |
 | `kytyps5-ds` | 9999 | KytyPS5 fork tuned for Demon's Souls (PPSA01341, 1.005/1.007), by chenxiao07 |
 | `kytyps5` | 9999 | Experimental PlayStation 5 emulator (based on Kyty) |
-| `lichii` | 117, 150, 9999 | Nintendo Switch 2 emulator (fork of Eden/Eglantine) |
+| `lichii` | 117, 150, 177, 9999 | Nintendo Switch 2 emulator (fork of Eden/Eglantine) |
 | `missingno` | 9999 | Multi-system emulator and debugger in Rust (GB/GBC, Atari 2600, SG-1000...) |
 | `nestalgia` | 9999 | High-accuracy NES/Famicom emulator in Kotlin (port of Mesen) |
 | `nestopia` | 2.0.0 | High-accuracy NES/Famicom emulator (Nestopia JG with the QTea frontend) |
@@ -93,32 +93,32 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 
 | Package | Version | Description |
 |---|---|---|
-| `cadcraft` | 0.20.0 | 2D CAD drafting with DXF and DWG support (AutoCAD-style), written in Rust |
-| `figcraft` | 0.17.0 | User interface design and prototyping (Figma-style), written in Rust |
-| `lightcraft` | 0.20.0 | Open-source photo editor and raw developer (Lightroom-style), written in Rust |
-| `photocraft` | 0.22.0 | Clean-room image editor with PSD support (Photoshop-style), in Rust |
-| `texturecraft` | 0.6.0 | PBR texture painting on 3D meshes (Substance Painter-style), written in Rust |
-| `vectorcraft` | 0.23.0 | Vector illustration editor with SVG and PDF (Illustrator-style), written in Rust |
+| `cadcraft` | 0.20.1 | 2D CAD drafting with DXF and DWG support (AutoCAD-style), written in Rust |
+| `figcraft` | 0.18.1 | User interface design and prototyping (Figma-style), written in Rust |
+| `lightcraft` | 0.21.1 | Open-source photo editor and raw developer (Lightroom-style), written in Rust |
+| `photocraft` | 0.23.1 | Clean-room image editor with PSD support (Photoshop-style), in Rust |
+| `texturecraft` | 0.6.1 | PBR texture painting on 3D meshes (Substance Painter-style), written in Rust |
+| `vectorcraft` | 0.24.1 | Vector illustration editor with SVG and PDF (Illustrator-style), written in Rust |
 
 ### media-sound
 
 | Package | Version | Description |
 |---|---|---|
-| `soundcraft` | 0.19.0 | Audio and MIDI recording, editing and mixing (Pro Tools-style), written in Rust |
+| `soundcraft` | 0.20.1 | Audio and MIDI recording, editing and mixing (Pro Tools-style), written in Rust |
 
 ### media-video
 
 | Package | Version | Description |
 |---|---|---|
-| `effectcraft` | 0.24.0 | Motion graphics and VFX compositor (After Effects-style), in Rust |
-| `filmcraft` | 0.20.0 | Open-source video editor with GPU compositing, written in Rust |
+| `effectcraft` | 0.24.1 | Motion graphics and VFX compositor (After Effects-style), in Rust |
+| `filmcraft` | 0.20.1 | Open-source video editor with GPU compositing, written in Rust |
 
 ### net-misc
 
 | Package | Version | Description |
 |---|---|---|
 | `persepolis` | 5.2.0 | Download manager with a Qt (PySide6) GUI, video downloads via yt-dlp |
-| `xdm-app` | 9.0.9 | Xtreme Download Manager: download accelerator and video downloader |
+| `xdm-app` | 9.0.10 | Xtreme Download Manager: download accelerator and video downloader |
 
 ## Resumen en español
 

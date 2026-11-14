@@ -72,6 +72,17 @@ src_unpack() {
 	default
 }
 
+src_prepare() {
+	cmake_src_prepare
+
+	# cpp-httplib nuevo: Request::params es httplib::Params, un contenedor propio
+	# (antes era std::multimap). ParseCallback sigue esperando un std::multimap,
+	# así que se convierte en la llamada; vale para la versión vieja y la nueva
+	grep -rlF 'ParseCallback(request.params' src \
+		| xargs -r sed -i 's/ParseCallback(request\.params/ParseCallback(std::multimap<std::string, std::string>(request.params.begin(), request.params.end())/' \
+		|| die
+}
+
 src_configure() {
 	# El eclass añade su propio -DCMAKE_BUILD_TYPE al final; así se respeta Release
 	CMAKE_BUILD_TYPE=Release
