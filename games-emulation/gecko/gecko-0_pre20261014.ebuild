@@ -1,0 +1,988 @@
+# Copyright 2026 akaelover
+# Distributed under the terms of the GNU General Public License v2
+
+# Generado a partir del Cargo.lock del tag "release" (commit ffe75d1)
+
+EAPI=8
+
+CRATES="
+	ab_glyph@0.2.32
+	ab_glyph_rasterizer@0.1.10
+	accesskit@0.24.0
+	addr2line@0.25.1
+	adler2@2.0.1
+	aes@0.8.4
+	ahash@0.8.12
+	aho-corasick@1.1.4
+	aligned-vec@0.6.4
+	aligned@0.4.3
+	allocator-api2@0.2.21
+	alsa-sys@0.4.0
+	alsa@0.11.0
+	android-activity@0.6.1
+	android-build@0.1.4
+	android-properties@0.2.2
+	android_system_properties@0.1.5
+	annotate-snippets@0.12.5
+	anstream@1.0.0
+	anstyle-parse@1.0.0
+	anstyle-query@1.1.5
+	anstyle-wincon@3.0.11
+	anstyle@1.0.14
+	anyhow@1.0.102
+	arbitrary@1.4.2
+	arboard@3.6.1
+	arc-swap@1.9.1
+	arg_enum_proc_macro@0.3.4
+	arrayref@0.3.9
+	arrayvec@0.7.6
+	as-raw-xcb-connection@1.0.1
+	as-slice@0.2.1
+	ascii-canvas@4.0.0
+	ascii@1.1.0
+	ash@0.38.0+1.3.281
+	async-broadcast@0.7.2
+	async-channel@2.5.0
+	async-executor@1.14.0
+	async-io@2.6.0
+	async-lock@3.4.2
+	async-process@2.5.0
+	async-recursion@1.1.1
+	async-signal@0.2.14
+	async-task@4.7.1
+	async-trait@0.1.89
+	atomic-waker@1.1.2
+	autocfg@1.5.0
+	av-scenechange@0.14.1
+	av1-grain@0.2.5
+	avif-serialize@0.8.9
+	aws-lc-rs@1.17.0
+	aws-lc-sys@0.41.0
+	backtrace@0.3.76
+	base16ct@0.2.0
+	base64@0.22.1
+	bincode@1.3.3
+	bincode@2.0.1
+	bit-set@0.8.0
+	bit-set@0.9.1
+	bit-vec@0.8.0
+	bit-vec@0.9.1
+	bit_field@0.10.3
+	bitflags@1.3.2
+	bitflags@2.11.1
+	bitstream-io@4.10.0
+	block-buffer@0.10.4
+	block-padding@0.3.3
+	block2@0.5.1
+	block2@0.6.2
+	blocking@1.6.2
+	bstr@1.12.1
+	built@0.8.0
+	bumpalo@3.20.2
+	bytemuck@1.25.0
+	bytemuck_derive@1.10.2
+	byteorder-lite@0.1.0
+	byteorder@1.5.0
+	bytes@1.11.1
+	calloop-wayland-source@0.3.0
+	calloop-wayland-source@0.4.1
+	calloop@0.13.0
+	calloop@0.14.4
+	cassowary@0.3.0
+	castaway@0.2.4
+	cbc@0.1.2
+	cc@1.2.62
+	cesu8@1.1.0
+	cfg-if@1.0.4
+	cfg_aliases@0.2.1
+	chapa-macros@0.1.2
+	chapa@0.1.2
+	chipi-build@0.9.1
+	chipi-core@0.9.1
+	chrono@0.4.44
+	chunked_transfer@1.5.0
+	cipher@0.4.4
+	clap@4.6.1
+	clap_builder@4.6.0
+	clap_derive@4.6.1
+	clap_lex@1.1.0
+	clipboard-win@5.4.1
+	cmake@0.1.58
+	codespan-reporting@0.13.1
+	color@0.3.3
+	color_quant@1.1.0
+	colorchoice@1.0.5
+	colored@3.1.1
+	combine@4.6.7
+	comfy-table@7.2.2
+	compact_str@0.8.1
+	concurrent-queue@2.5.0
+	convert_case@0.10.0
+	core-foundation-sys@0.8.7
+	core-foundation@0.10.1
+	core-foundation@0.9.4
+	core-graphics-types@0.1.3
+	core-graphics@0.23.2
+	core_maths@0.1.1
+	coreaudio-rs@0.14.2
+	cosmic-text@0.19.0
+	cpal@0.17.3
+	cpufeatures@0.2.17
+	crc32fast@1.5.0
+	crossbeam-channel@0.5.15
+	crossbeam-deque@0.8.6
+	crossbeam-epoch@0.9.18
+	crossbeam-utils@0.8.21
+	crossterm@0.28.1
+	crossterm@0.29.0
+	crossterm_winapi@0.9.1
+	crunchy@0.2.4
+	crypto-common@0.1.7
+	ctor@0.10.1
+	ctrlc@3.5.2
+	cursor-icon@1.2.0
+	darling@0.23.0
+	darling_core@0.23.0
+	darling_macro@0.23.0
+	dasp_sample@0.11.0
+	ddsfile@0.6.0
+	derive_more-impl@2.1.1
+	derive_more@2.1.1
+	digest@0.10.7
+	dirs-next@2.0.0
+	dirs-sys-next@0.1.2
+	dispatch2@0.3.1
+	dispatch@0.2.0
+	displaydoc@0.2.5
+	dlib@0.5.3
+	document-features@0.2.12
+	downcast-rs@1.2.1
+	dpi@0.1.2
+	dtor@0.8.1
+	dunce@1.0.5
+	dyn-clone@1.0.20
+	ecolor@0.34.2
+	egui-phosphor@0.12.0
+	egui-wgpu@0.34.2
+	egui-winit@0.34.2
+	egui@0.34.2
+	either@1.15.0
+	emath@0.34.2
+	ena@0.14.4
+	encode_unicode@1.0.0
+	encoding_rs@0.8.35
+	endi@1.1.1
+	enum-primitive-derive@0.3.0
+	enumflags2@0.7.12
+	enumflags2_derive@0.7.12
+	env_home@0.1.0
+	epaint@0.34.2
+	epaint_default_fonts@0.34.2
+	equator-macro@0.4.2
+	equator@0.4.2
+	equivalent@1.0.2
+	errno@0.3.14
+	error-code@3.3.2
+	etagere@0.2.15
+	euclid@0.22.14
+	event-listener-strategy@0.5.4
+	event-listener@5.4.1
+	exr@1.74.0
+	eyre@0.6.12
+	fastrand@2.4.1
+	fax@0.2.7
+	fdeflate@0.3.7
+	fearless_simd@0.3.0
+	find-msvc-tools@0.1.9
+	fixedbitset@0.5.7
+	flate2@1.1.9
+	float-cmp@0.9.0
+	fnv@1.0.7
+	foldhash@0.1.5
+	foldhash@0.2.0
+	font-types@0.11.3
+	fontconfig-parser@0.5.8
+	fontdb@0.23.0
+	foreign-types-macros@0.2.3
+	foreign-types-shared@0.3.1
+	foreign-types@0.5.0
+	form_urlencoded@1.2.2
+	fs_extra@1.3.0
+	futures-channel@0.3.32
+	futures-core@0.3.32
+	futures-executor@0.3.32
+	futures-io@0.3.32
+	futures-lite@2.6.1
+	futures-macro@0.3.32
+	futures-sink@0.3.32
+	futures-task@0.3.32
+	futures-timer@3.0.3
+	futures-util@0.3.32
+	futures@0.3.32
+	generic-array@0.14.7
+	gethostname@1.1.0
+	getrandom@0.2.17
+	getrandom@0.3.4
+	getrandom@0.4.2
+	gif@0.14.2
+	gimli@0.32.3
+	gimli@0.33.0
+	gl_generator@0.14.0
+	glam@0.25.0
+	glam@0.33.7
+	glob@0.3.3
+	glow@0.17.0
+	glutin_wgl_sys@0.6.1
+	gpu-allocator@0.28.0
+	gpu-descriptor-types@0.2.0
+	gpu-descriptor@0.3.2
+	guillotiere@0.6.2
+	gzip-header@1.1.0
+	h2@0.4.14
+	half@2.7.1
+	harfrust@0.5.2
+	hashbrown@0.15.5
+	hashbrown@0.16.1
+	hashbrown@0.17.1
+	hdrhistogram@7.5.4
+	heck@0.5.0
+	hermit-abi@0.5.2
+	hex@0.4.3
+	hexf-parse@0.2.1
+	hotpath-macros-meta@0.16.1
+	hotpath-macros@0.16.1
+	hotpath-meta@0.16.1
+	hotpath@0.16.1
+	hound@3.5.1
+	http-body-util@0.1.3
+	http-body@1.0.1
+	http@1.4.0
+	httparse@1.10.1
+	httpdate@1.0.3
+	hyper-rustls@0.27.9
+	hyper-util@0.1.20
+	hyper@1.9.0
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.65
+	icu_collections@2.2.0
+	icu_locale_core@2.2.0
+	icu_normalizer@2.2.0
+	icu_normalizer_data@2.2.0
+	icu_properties@2.2.0
+	icu_properties_data@2.2.0
+	icu_provider@2.2.0
+	id-arena@2.3.0
+	ident_case@1.0.1
+	idna@1.1.0
+	idna_adapter@1.2.2
+	image-webp@0.2.4
+	image@0.25.10
+	imgref@1.12.1
+	indenter@0.3.4
+	indexed_deflate@0.1.0
+	indexmap@2.14.0
+	indoc@2.0.7
+	inout@0.1.4
+	instability@0.3.12
+	interpolate_name@0.2.4
+	ipnet@2.12.0
+	is-terminal@0.4.17
+	is_terminal_polyfill@1.70.2
+	itertools@0.13.0
+	itertools@0.14.0
+	itoa@1.0.18
+	jni-macros@0.22.4
+	jni-sys-macros@0.4.1
+	jni-sys@0.3.1
+	jni-sys@0.4.1
+	jni@0.21.1
+	jni@0.22.4
+	jobserver@0.1.34
+	js-sys@0.3.85
+	kamadak-exif@0.6.1
+	keccak@0.1.6
+	khronos-egl@6.0.0
+	khronos_api@3.1.0
+	kurbo@0.10.4
+	kurbo@0.13.1
+	lalrpop-util@0.22.2
+	lalrpop@0.22.2
+	lazy_static@1.5.0
+	leb128fmt@0.1.0
+	lebe@0.5.3
+	lexical-core@1.0.6
+	lexical-parse-float@1.0.6
+	lexical-parse-integer@1.0.6
+	lexical-util@1.0.7
+	lexical-write-float@1.0.6
+	lexical-write-integer@1.0.6
+	lexical@7.0.5
+	libc@0.2.186
+	libfuzzer-sys@0.4.12
+	libloading@0.8.9
+	libm@0.2.16
+	libmimalloc-sys@0.1.47
+	libredox@0.1.16
+	lilt@0.8.1
+	linebender_resource_handle@0.1.1
+	linux-raw-sys@0.12.1
+	linux-raw-sys@0.4.15
+	litemap@0.8.2
+	litrs@1.0.0
+	lock_api@0.4.14
+	log@0.4.29
+	logos-codegen@0.16.1
+	logos-derive@0.16.1
+	logos@0.16.1
+	loop9@0.1.5
+	lru-slab@0.1.2
+	lru@0.12.5
+	lru@0.16.4
+	lua-src@547.0.0
+	luajit-src@210.5.12+a4f56a4
+	luau0-src@0.12.3+luau663
+	mach2@0.4.3
+	mach2@0.5.0
+	matchers@0.2.0
+	maybe-rayon@0.1.1
+	memchr@2.8.0
+	memmap2@0.2.3
+	memmap2@0.9.10
+	memoffset@0.9.1
+	mimalloc@0.1.50
+	mime@0.3.17
+	miniz_oxide@0.8.9
+	mio@1.2.0
+	mlua-sys@0.6.8
+	mlua@0.10.5
+	moxcms@0.8.1
+	multiversion-macros@0.8.0
+	multiversion@0.8.0
+	mundy@0.2.3
+	mutate_once@0.1.2
+	ndk-context@0.1.1
+	ndk-sys@0.6.0+11769913
+	ndk@0.9.0
+	new_debug_unreachable@1.0.6
+	nix@0.31.3
+	no_std_io2@0.9.4
+	nod@1.4.4
+	nohash-hasher@0.2.0
+	nom@8.0.0
+	noop_proc_macro@0.3.0
+	nu-ansi-term@0.50.3
+	num-bigint@0.4.6
+	num-derive@0.4.2
+	num-integer@0.1.46
+	num-rational@0.4.2
+	num-traits@0.2.19
+	num_enum@0.7.6
+	num_enum_derive@0.7.6
+	objc-sys@0.3.5
+	objc2-app-kit@0.2.2
+	objc2-app-kit@0.3.2
+	objc2-audio-toolbox@0.3.2
+	objc2-avf-audio@0.3.2
+	objc2-cloud-kit@0.2.2
+	objc2-cloud-kit@0.3.2
+	objc2-contacts@0.2.2
+	objc2-core-audio-types@0.3.2
+	objc2-core-audio@0.3.2
+	objc2-core-data@0.2.2
+	objc2-core-data@0.3.2
+	objc2-core-foundation@0.3.2
+	objc2-core-graphics@0.3.2
+	objc2-core-image@0.2.2
+	objc2-core-image@0.3.2
+	objc2-core-location@0.2.2
+	objc2-core-text@0.3.2
+	objc2-core-video@0.3.2
+	objc2-encode@4.1.0
+	objc2-foundation@0.2.2
+	objc2-foundation@0.3.2
+	objc2-io-surface@0.3.2
+	objc2-link-presentation@0.2.2
+	objc2-metal@0.2.2
+	objc2-metal@0.3.2
+	objc2-quartz-core@0.2.2
+	objc2-quartz-core@0.3.2
+	objc2-symbols@0.2.2
+	objc2-ui-kit@0.2.2
+	objc2-ui-kit@0.3.2
+	objc2-uniform-type-identifiers@0.2.2
+	objc2-user-notifications@0.2.2
+	objc2@0.5.2
+	objc2@0.6.4
+	object@0.36.7
+	object@0.37.3
+	once_cell@1.21.4
+	once_cell_polyfill@1.70.2
+	openssl-probe@0.2.1
+	orbclient@0.3.54
+	ordered-float@5.3.0
+	ordered-stream@0.2.0
+	os_pipe@1.2.3
+	owned_ttf_parser@0.25.1
+	owo-colors@4.3.0
+	parking@2.2.1
+	parking_lot@0.12.5
+	parking_lot_core@0.9.12
+	paste@1.0.15
+	pastey@0.1.1
+	pastey@0.2.2
+	peniko@0.6.1
+	percent-encoding@2.3.2
+	petgraph@0.7.1
+	petgraph@0.8.3
+	phf_shared@0.11.3
+	pin-project-internal@1.1.13
+	pin-project-lite@0.2.17
+	pin-project@1.1.13
+	pin-utils@0.1.0
+	piper@0.2.5
+	pkg-config@0.3.33
+	plain@0.2.3
+	png@0.18.1
+	polling@3.11.0
+	pollster@0.4.0
+	polycool@0.4.0
+	portable-atomic-util@0.2.7
+	portable-atomic@1.13.1
+	potential_utf@0.1.5
+	ppv-lite86@0.2.21
+	precomputed-hash@0.1.1
+	presser@0.3.1
+	prettyplease@0.2.37
+	prettytable-rs@0.10.0
+	proc-macro-crate@3.5.0
+	proc-macro2@1.0.106
+	profiling-procmacros@1.0.18
+	profiling@1.0.18
+	pxfm@0.1.29
+	qoi@0.4.1
+	quanta@0.12.6
+	quick-error@2.0.1
+	quick-xml@0.39.4
+	quinn-proto@0.11.14
+	quinn-udp@0.5.14
+	quinn@0.11.9
+	quote@1.0.45
+	r-efi@5.3.0
+	r-efi@6.0.0
+	rand@0.9.4
+	rand_chacha@0.9.0
+	rand_core@0.9.5
+	range-alloc@0.1.5
+	rangemap@1.7.1
+	ratatui@0.29.0
+	rav1e@0.8.1
+	ravif@0.13.0
+	raw-cpuid@11.6.0
+	raw-window-handle@0.6.2
+	raw-window-metal@1.1.0
+	rayon-core@1.13.0
+	rayon@1.12.0
+	read-fonts@0.37.0
+	redox_syscall@0.4.1
+	redox_syscall@0.5.18
+	redox_syscall@0.7.5
+	redox_users@0.4.6
+	ref-cast-impl@1.0.25
+	ref-cast@1.0.25
+	regalloc2@0.15.1
+	regex-automata@0.4.14
+	regex-syntax@0.8.10
+	regex@1.12.3
+	region@3.0.2
+	relative-path@1.9.3
+	renderdoc-sys@1.1.0
+	renderdoc@0.12.1
+	reqwest@0.13.4
+	rfd@0.17.2
+	rgb@0.8.53
+	ring@0.17.14
+	ringbuf@0.5.0
+	rmcp-macros@1.7.0
+	rmcp@1.7.0
+	ron@0.10.1
+	roxmltree@0.20.0
+	rpkg-config@0.1.2
+	rstest@0.25.0
+	rstest_macros@0.25.0
+	rustc-demangle@0.1.27
+	rustc-hash@1.1.0
+	rustc-hash@2.1.2
+	rustc_version@0.4.1
+	rustix@0.38.44
+	rustix@1.1.4
+	rustls-native-certs@0.8.3
+	rustls-pki-types@1.14.1
+	rustls-platform-verifier-android@0.1.1
+	rustls-platform-verifier@0.7.0
+	rustls-webpki@0.103.13
+	rustls@0.23.40
+	rustversion@1.0.22
+	ryu@1.0.23
+	same-file@1.0.6
+	schannel@0.1.29
+	schemars@1.2.1
+	schemars_derive@1.2.1
+	scoped-tls@1.0.1
+	scopeguard@1.2.0
+	sctk-adwaita@0.10.1
+	sdl3-image-src@3.4.4
+	sdl3-image-sys@0.6.4+SDL-image-3.4.4
+	sdl3-mixer-src@3.2.4
+	sdl3-mixer-sys@0.6.3+SDL-mixer-3.2.4
+	sdl3-src@3.4.10
+	sdl3-sys@0.6.6+SDL-3.4.10
+	sdl3-ttf-src@3.2.2
+	sdl3-ttf-sys@0.6.1+SDL-ttf-3.2.2
+	sdl3@0.18.4
+	security-framework-sys@2.17.0
+	security-framework@3.7.0
+	self_cell@1.2.2
+	semver@1.0.28
+	serde@1.0.228
+	serde_bytes@0.11.19
+	serde_core@1.0.228
+	serde_derive@1.0.228
+	serde_derive_internals@0.29.1
+	serde_json@1.0.149
+	serde_repr@0.1.20
+	serde_spanned@1.1.1
+	sha1@0.10.7
+	sha3@0.10.9
+	sharded-slab@0.1.7
+	shlex@1.3.0
+	signal-hook-mio@0.2.5
+	signal-hook-registry@1.4.8
+	signal-hook@0.3.18
+	simd-adler32@0.3.9
+	simd_cesu8@1.1.1
+	simd_helpers@0.1.0
+	simdutf8@0.1.5
+	siphasher@1.0.3
+	skrifa@0.40.0
+	slab@0.4.12
+	slotmap@1.1.1
+	smallvec@1.15.1
+	smithay-client-toolkit@0.19.2
+	smithay-client-toolkit@0.20.0
+	smithay-clipboard@0.7.3
+	smol_str@0.2.2
+	smol_str@0.3.6
+	socket2@0.6.3
+	softbuffer@0.4.8
+	spin_sleep@1.3.3
+	spirv@0.4.0+sdk-1.4.341.0
+	stable_deref_trait@1.2.1
+	static_assertions@1.1.0
+	strict-num@0.1.1
+	string_cache@0.8.9
+	strsim@0.11.1
+	strum@0.26.3
+	strum_macros@0.26.4
+	subtle@2.6.1
+	svg_fmt@0.4.5
+	swash@0.2.7
+	syn@2.0.117
+	sync_wrapper@1.0.2
+	synstructure@0.13.2
+	sys-locale@0.3.2
+	system-configuration-sys@0.6.0
+	system-configuration@0.7.0
+	target-features@0.1.6
+	target-lexicon@0.13.5
+	tempfile@3.27.0
+	term@0.7.0
+	term@1.2.1
+	termcolor@1.4.1
+	termtree@1.0.0
+	texture2ddecoder@0.1.2
+	thiserror-impl@1.0.69
+	thiserror-impl@2.0.18
+	thiserror@1.0.69
+	thiserror@2.0.18
+	thread_local@1.1.9
+	tiff@0.11.3
+	tiny-skia-path@0.11.4
+	tiny-skia@0.11.4
+	tiny-xlib@0.2.5
+	tiny_http@0.12.0
+	tinystr@0.8.3
+	tinyvec@1.11.0
+	tinyvec_macros@0.1.1
+	tokio-macros@2.7.0
+	tokio-rustls@0.26.4
+	tokio-util@0.7.18
+	tokio@1.52.3
+	toml@1.1.2+spec-1.1.0
+	toml_datetime@1.1.1+spec-1.1.0
+	toml_edit@0.25.11+spec-1.1.0
+	toml_parser@1.1.2+spec-1.1.0
+	toml_writer@1.1.1+spec-1.1.0
+	tower-http@0.6.11
+	tower-layer@0.3.3
+	tower-service@0.3.3
+	tower@0.5.3
+	tracing-attributes@0.1.31
+	tracing-core@0.1.36
+	tracing-log@0.2.0
+	tracing-subscriber@0.3.23
+	tracing@0.1.44
+	tree_magic_mini@3.2.2
+	try-lock@0.2.5
+	ttf-parser@0.25.1
+	twox-hash@2.1.4
+	type-map@0.5.1
+	typed-path@0.12.3
+	typenum@1.20.0
+	uds_windows@1.2.1
+	unicode-bidi@0.3.18
+	unicode-ident@1.0.24
+	unicode-linebreak@0.1.5
+	unicode-script@0.5.8
+	unicode-segmentation@1.13.2
+	unicode-truncate@1.1.0
+	unicode-width@0.1.14
+	unicode-width@0.2.0
+	unicode-xid@0.2.6
+	untrusted@0.9.0
+	unty@0.0.4
+	url@2.5.8
+	utf8_iter@1.0.4
+	utf8parse@0.2.2
+	uuid@1.23.1
+	v_frame@0.3.9
+	valuable@0.1.1
+	vcpkg@0.2.15
+	vello_common@0.0.6
+	vello_cpu@0.0.6
+	version_check@0.9.5
+	walkdir@2.5.0
+	want@0.3.1
+	wasi@0.11.1+wasi-snapshot-preview1
+	wasip2@1.0.3+wasi-0.2.9
+	wasip3@0.4.0+wasi-0.3.0-rc-2026-01-06
+	wasm-bindgen-futures@0.4.58
+	wasm-bindgen-macro-support@0.2.108
+	wasm-bindgen-macro@0.2.108
+	wasm-bindgen-shared@0.2.108
+	wasm-bindgen@0.2.108
+	wasm-encoder@0.244.0
+	wasm-metadata@0.244.0
+	wasmparser@0.244.0
+	wasmtimer@0.4.3
+	wayland-backend@0.3.15
+	wayland-client@0.31.14
+	wayland-csd-frame@0.3.0
+	wayland-cursor@0.31.14
+	wayland-protocols-experimental@20250721.0.1
+	wayland-protocols-misc@0.3.12
+	wayland-protocols-plasma@0.3.12
+	wayland-protocols-wlr@0.3.12
+	wayland-protocols@0.32.12
+	wayland-scanner@0.31.10
+	wayland-sys@0.31.11
+	web-sys@0.3.85
+	web-time@1.1.0
+	webbrowser@1.2.1
+	webpki-root-certs@1.0.7
+	weezl@0.1.12
+	wesl-macros@0.3.2
+	wesl@0.3.2
+	wgsl-parse@0.3.2
+	wgsl-types@0.3.2
+	which@7.0.3
+	winapi-i686-pc-windows-gnu@0.4.0
+	winapi-util@0.1.11
+	winapi-x86_64-pc-windows-gnu@0.4.0
+	winapi@0.3.9
+	windows-collections@0.3.2
+	windows-core@0.62.2
+	windows-future@0.3.2
+	windows-implement@0.60.2
+	windows-interface@0.59.3
+	windows-link@0.2.1
+	windows-numerics@0.3.1
+	windows-registry@0.6.1
+	windows-result@0.4.1
+	windows-strings@0.5.1
+	windows-sys@0.45.0
+	windows-sys@0.52.0
+	windows-sys@0.59.0
+	windows-sys@0.60.2
+	windows-sys@0.61.2
+	windows-targets@0.42.2
+	windows-targets@0.52.6
+	windows-targets@0.53.5
+	windows-threading@0.2.1
+	windows@0.62.2
+	windows_aarch64_gnullvm@0.42.2
+	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_gnullvm@0.53.1
+	windows_aarch64_msvc@0.42.2
+	windows_aarch64_msvc@0.52.6
+	windows_aarch64_msvc@0.53.1
+	windows_i686_gnu@0.42.2
+	windows_i686_gnu@0.52.6
+	windows_i686_gnu@0.53.1
+	windows_i686_gnullvm@0.52.6
+	windows_i686_gnullvm@0.53.1
+	windows_i686_msvc@0.42.2
+	windows_i686_msvc@0.52.6
+	windows_i686_msvc@0.53.1
+	windows_x86_64_gnu@0.42.2
+	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnu@0.53.1
+	windows_x86_64_gnullvm@0.42.2
+	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_gnullvm@0.53.1
+	windows_x86_64_msvc@0.42.2
+	windows_x86_64_msvc@0.52.6
+	windows_x86_64_msvc@0.53.1
+	winit@0.30.13
+	winnow@1.0.3
+	winsafe@0.0.19
+	wio@0.2.2
+	wit-bindgen-core@0.51.0
+	wit-bindgen-rust-macro@0.51.0
+	wit-bindgen-rust@0.51.0
+	wit-bindgen@0.51.0
+	wit-bindgen@0.57.1
+	wit-component@0.244.0
+	wit-parser@0.244.0
+	wl-clipboard-rs@0.9.3
+	writeable@0.6.3
+	x11-dl@2.21.0
+	x11rb-protocol@0.13.2
+	x11rb@0.13.2
+	xcursor@0.3.10
+	xkbcommon-dl@0.4.2
+	xkeysym@0.2.1
+	xml-rs@0.8.28
+	y4m@0.8.0
+	yazi@0.2.1
+	yoke-derive@0.8.2
+	yoke@0.8.2
+	zbus@5.15.0
+	zbus_macros@5.15.0
+	zbus_names@4.3.2
+	zeno@0.3.3
+	zerocopy-derive@0.8.57
+	zerocopy@0.8.57
+	zerofrom-derive@0.1.7
+	zerofrom@0.1.8
+	zeroize@1.8.2
+	zerotrie@0.2.4
+	zerovec-derive@0.11.3
+	zerovec@0.11.6
+	zip@8.6.0
+	zlib-rs@0.6.3
+	zmij@1.0.21
+	zopfli@0.8.3
+	zstd-safe@7.2.4
+	zstd-sys@2.0.16+zstd.1.5.7
+	zstd@0.13.3
+	zune-core@0.5.1
+	zune-inflate@0.2.54
+	zune-jpeg@0.5.15
+	zvariant@5.11.0
+	zvariant_derive@5.11.0
+	zvariant_utils@3.3.1
+"
+
+declare -A GIT_CRATES=(
+	[cryoglyph]='https://github.com/iced-rs/cryoglyph;53ba3e879539d19ed8162942126a977ec896cc3b;cryoglyph-%commit%'
+	[iced]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%'
+	[iced_core]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/core'
+	[iced_debug]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/debug'
+	[iced_futures]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/futures'
+	[iced_graphics]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/graphics'
+	[iced_program]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/program'
+	[iced_renderer]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/renderer'
+	[iced_runtime]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/runtime'
+	[iced_tiny_skia]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/tiny_skia'
+	[iced_wgpu]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/wgpu'
+	[iced_widget]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/widget'
+	[iced_winit]='https://github.com/iced-rs/iced;0d12e964da8c3f0f7a02d3d731e3187eecfe5779;iced-%commit%/winit'
+	[dpi]='https://github.com/iced-rs/winit;05b8ff17a06562f0a10bb46e6eaacbe2a95cb5ed;winit-%commit%/dpi'
+	[winit]='https://github.com/iced-rs/winit;05b8ff17a06562f0a10bb46e6eaacbe2a95cb5ed;winit-%commit%'
+	[iced_aw]='https://github.com/ioncodes/iced_aw;0d6fe5f62ea12bfbbc97bf7076cc6063acf23c3f;iced_aw-%commit%'
+	[idb-rs]='https://github.com/ioncodes/idb-rs;843ae819f16aec0051c13b77d3ffccbbc70a3318;idb-rs-%commit%'
+	[cranelift-assembler-x64]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/assembler-x64'
+	[cranelift-assembler-x64-meta]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/assembler-x64/meta'
+	[cranelift-bforest]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/bforest'
+	[cranelift-bitset]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/bitset'
+	[cranelift-codegen]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/codegen'
+	[cranelift-codegen-meta]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/codegen/meta'
+	[cranelift-codegen-shared]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/codegen/shared'
+	[cranelift-control]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/control'
+	[cranelift-entity]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/entity'
+	[cranelift-frontend]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/frontend'
+	[cranelift-isle]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/isle/isle'
+	[cranelift-jit]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/jit'
+	[cranelift-module]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/module'
+	[cranelift-native]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/native'
+	[cranelift-srcgen]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/cranelift/srcgen'
+	[wasmtime-internal-core]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/crates/core'
+	[wasmtime-internal-jit-icache-coherence]='https://github.com/ioncodes/wasmtime;59ed12379df8beb8b0d7c825963033b68c2ebc9a;wasmtime-%commit%/crates/jit-icache-coherence'
+	[naga]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/naga'
+	[wgpu]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu'
+	[wgpu-core]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-core'
+	[wgpu-core-deps-apple]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-core/platform-deps/apple'
+	[wgpu-core-deps-emscripten]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-core/platform-deps/emscripten'
+	[wgpu-core-deps-wasm]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-core/platform-deps/wasm'
+	[wgpu-core-deps-windows-linux-android]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-core/platform-deps/windows-linux-android'
+	[wgpu-hal]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-hal'
+	[wgpu-naga-bridge]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-naga-bridge'
+	[wgpu-types]='https://github.com/ioncodes/wgpu;e995382966810ef0e62b96631e28aed38076a245;wgpu-%commit%/wgpu-types'
+)
+
+RUST_MIN_VER="1.96.0"
+
+inherit cargo desktop xdg
+
+# El tag "release" de upstream se mueve con cada versión nueva,
+# así que el paquete se fija al commit al que apunta en cada momento
+GECKO_COMMIT="ffe75d1ff857561e43beaaeba2f18d3c6835e309"
+GECKO_DATE="2026-10-14T09:21:27Z"
+# Submódulos usados en la compilación
+CHIPI_COMMIT="faaf9f1293b3a858264f51906838c2d12492c50e"
+SOLSTICE_COMMIT="9a44eeb775229e08ee80362e09e9fa29e16a41d0"
+DOLPHIN_COMMIT="8d2ad1a662472955497e5bb79d7b9ec6999e1f0d"
+
+DESCRIPTION="Emulador y depurador de GameCube/Wii escrito en Rust"
+HOMEPAGE="https://github.com/ioncodes/gecko"
+SRC_URI="
+	https://github.com/ioncodes/gecko/archive/${GECKO_COMMIT}.tar.gz
+		-> ${P}.tar.gz
+	https://github.com/ioncodes/chipi-spec/archive/${CHIPI_COMMIT}.tar.gz
+		-> chipi-spec-${CHIPI_COMMIT}.tar.gz
+	https://codeberg.org/hazelwiss/solstice/archive/${SOLSTICE_COMMIT}.tar.gz
+		-> solstice-${SOLSTICE_COMMIT}.tar.gz
+	https://raw.githubusercontent.com/dolphin-emu/dolphin/${DOLPHIN_COMMIT}/Data/Sys/GC/dsp_rom.bin
+		-> gecko-dolphin-dsp_rom-${DOLPHIN_COMMIT:0:10}.bin
+	https://raw.githubusercontent.com/dolphin-emu/dolphin/${DOLPHIN_COMMIT}/Data/Sys/GC/dsp_coef.bin
+		-> gecko-dolphin-dsp_coef-${DOLPHIN_COMMIT:0:10}.bin
+	${CARGO_CRATE_URIS}
+"
+S="${WORKDIR}/gecko-${GECKO_COMMIT}"
+
+LICENSE="GPL-3 GPL-2+"
+# Licencias de los crates (aproximadas; para la lista exacta: pycargoebuild -i)
+LICENSE+="
+	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0
+	CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0 OFL-1.1 openssl
+	Unicode-3.0 Unlicense ZLIB
+"
+SLOT="0"
+KEYWORDS="~amd64"
+
+# SDL3 se compila estático desde el código del crate sdl3-src:
+# hacen falta las cabeceras de los backends que queremos que tenga
+COMMON_DEPEND="
+	media-libs/alsa-lib
+	virtual/libudev:=
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	dev-libs/wayland
+	media-libs/vulkan-loader
+	x11-libs/libX11
+	x11-libs/libXcursor
+	x11-libs/libXi
+	x11-libs/libXrandr
+	x11-libs/libxkbcommon
+"
+DEPEND="
+	${RDEPEND}
+	dev-libs/wayland-protocols
+	media-libs/libpulse
+	media-video/pipewire
+	sys-apps/dbus
+	x11-base/xorg-proto
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXScrnSaver
+"
+BDEPEND="
+	dev-build/cmake
+	dev-util/wayland-scanner
+	virtual/pkgconfig
+"
+
+QA_FLAGS_IGNORED="usr/libexec/gecko/.*"
+
+GECKO_BINS=( gecko tinyapp debugger multitool mcp )
+
+src_prepare() {
+	# Submódulos
+	mkdir -p submodules || die
+	rmdir submodules/{chipi-spec,solstice} 2>/dev/null
+	mv "${WORKDIR}/chipi-spec-${CHIPI_COMMIT}" submodules/chipi-spec || die
+	local sol=( "${WORKDIR}"/solstice* )
+	[[ -d ${sol[0]} ]] || die "no se encuentra el código de solstice"
+	mv "${sol[0]}" submodules/solstice || die
+	mkdir -p submodules/dolphin/Data/Sys/GC || die
+	cp "${DISTDIR}/gecko-dolphin-dsp_rom-${DOLPHIN_COMMIT:0:10}.bin" \
+		submodules/dolphin/Data/Sys/GC/dsp_rom.bin || die
+	cp "${DISTDIR}/gecko-dolphin-dsp_coef-${DOLPHIN_COMMIT:0:10}.bin" \
+		submodules/dolphin/Data/Sys/GC/dsp_coef.bin || die
+	[[ -f submodules/solstice/ipl/hle/ipl/gc_custom_ipl.bin ]] \
+		|| die "falta el IPL HLE de solstice"
+
+	# Las dependencias de [patch.crates-io] que apuntan a git se cambian
+	# por las rutas ya descargadas (en el sandbox no hay red)
+	local c url commit dir
+	for c in "${!GIT_CRATES[@]}"; do
+		IFS=';' read -r url commit dir <<< "${GIT_CRATES[${c}]}"
+		dir=${dir//%commit%/${commit}}
+		sed -i "s#^${c} = { git = .*#${c} = { path = \"${WORKDIR}/${dir}\" }#" \
+			Cargo.toml || die
+	done
+	grep -q '= { git = ' Cargo.toml && die "quedan dependencias git en Cargo.toml"
+
+	# Sin .git, build.rs no sabe qué versión es: se la damos
+	sed -i \
+		-e 's#^\(\s*let hash = \).*#\1"'${GECKO_COMMIT:0:7}'".to_owned();#' \
+		-e 's#^\(\s*let sha = \).*#\1"'${GECKO_COMMIT}'".to_owned();#' \
+		-e '/^\s*let date = self::git_output(&\[$/,/^\s*\.unwrap_or_default();$/c\    let date = "'${GECKO_DATE}'".to_owned();' \
+		crates/app/build.rs || die
+	grep -q "${GECKO_COMMIT}" crates/app/build.rs || die "no se pudo fijar la versión"
+
+	default
+}
+
+src_install() {
+	local bin name
+	exeinto /usr/libexec/gecko
+	for bin in "${GECKO_BINS[@]}"; do
+		doexe "$(cargo_target_dir)/${bin}"
+		[[ ${bin} == gecko ]] && name=gecko || name=gecko-${bin}
+		# Gecko guarda la configuración en el directorio actual:
+		# el lanzador la manda a ~/.local/share/gecko
+		newbin - "${name}" <<-EOF
+			#!/bin/sh
+			: "\${GECKO_DATA_DIR:=\${XDG_DATA_HOME:-\${HOME}/.local/share}/gecko}"
+			export GECKO_DATA_DIR
+			mkdir -p "\${GECKO_DATA_DIR}"
+			exec "${EPREFIX}/usr/libexec/gecko/${bin}" "\$@"
+		EOF
+	done
+
+	make_desktop_entry gecko "Gecko" applications-games "Game;Emulator;"
+	dodoc README.md other/example.conf
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	elog "Los datos (config.toml, partidas, NAND de Wii, system/) se guardan en"
+	elog "  \${XDG_DATA_HOME:-~/.local/share}/gecko"
+	elog "Cámbialo con la variable GECKO_DATA_DIR."
+	elog "Programas: gecko (lanzador), gecko-tinyapp, gecko-debugger,"
+	elog "gecko-multitool y gecko-mcp."
+	elog "Para los sensores y la vibración del DualSense hace falta acceso a"
+	elog "hidraw (paquete games-util/game-device-udev-rules o similar)."
+}

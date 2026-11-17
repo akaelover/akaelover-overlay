@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<longdescription lang="es">
+		Gecko es un emulador y depurador de GameCube y Wii escrito en Rust,
+		con JIT basado en Cranelift y renderizado con wgpu.
+		Incluye el lanzador gecko, tinyapp, el depurador y multitool.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ioncodes/gecko</remote-id>
+		<bugs-to>https://github.com/ioncodes/gecko/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
