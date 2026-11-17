@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="discord">Muestra el juego actual en Discord (Rich Presence)</flag>
+		<flag name="lto">Optimización en tiempo de enlazado (ENABLE_LTO de upstream)</flag>
+		<flag name="pgo">Compila con clang y el perfil PGO de upstream (eglantine.profdata); necesita LLVM 23 o más nuevo</flag>
+		<flag name="udev">Instala las reglas udev para el giroscopio de los mandos</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Eglantine-Community/Eglantine</remote-id>
+		<bugs-to>https://github.com/Eglantine-Community/Eglantine/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
