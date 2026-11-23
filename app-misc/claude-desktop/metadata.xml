@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>akaelover</name>
+	</maintainer>
+	<longdescription lang="es">
+		Reempaquetado del .deb oficial de Claude Desktop para Linux (beta)
+		del repositorio apt de Anthropic. Incluye Chat, Cowork y Claude Code.
+	</longdescription>
+</pkgmetadata>
