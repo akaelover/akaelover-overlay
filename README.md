@@ -50,7 +50,7 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 
 | Package | Version | Description |
 |---|---|---|
-| `pdfcraft` | 0.21.1 | PDF reader, organizer and editor (Acrobat-style), written in Rust |
+| `pdfcraft` | 0.22.0 | PDF reader, organizer and editor (Acrobat-style), written in Rust |
 
 ### games-emulation
 
@@ -67,7 +67,7 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 | `jgenesis` | 9999 | Multi-console emulator (Genesis/CD/32X, SMS/GG, NES, SNES, GB/GBC, GBA, PCE), in Rust |
 | `kytyps5-ds` | 9999 | KytyPS5 fork tuned for Demon's Souls (PPSA01341, 1.005/1.007), by chenxiao07 |
 | `kytyps5` | 9999 | Experimental PlayStation 5 emulator (based on Kyty) |
-| `lichii` | 117, 150, 177, 9999 | Nintendo Switch 2 emulator (fork of Eden/Eglantine) |
+| `lichii` | 117, 150, 177, 228, 366, 386, 9999 | Nintendo Switch 2 emulator (fork of Eden/Eglantine) |
 | `missingno` | 9999 | Multi-system emulator and debugger in Rust (GB/GBC, Atari 2600, SG-1000...) |
 | `nestalgia` | 9999 | High-accuracy NES/Famicom emulator in Kotlin (port of Mesen) |
 | `nestopia` | 2.0.0 | High-accuracy NES/Famicom emulator (Nestopia JG with the QTea frontend) |
@@ -87,7 +87,7 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 
 | Package | Version | Description |
 |---|---|---|
-| `recomp-launcher` | 0.6.0 | Installer/launcher that builds sp00nznet's game recomps from your own copy |
+| `recomp-launcher` | 0.7.0 | Installer/launcher that builds sp00nznet's game recomps from your own copy |
 
 ### media-gfx
 
@@ -118,7 +118,7 @@ ebuilds will not be submitted to the main Gentoo repository or to GURU.
 | Package | Version | Description |
 |---|---|---|
 | `persepolis` | 5.2.0 | Download manager with a Qt (PySide6) GUI, video downloads via yt-dlp |
-| `xdm-app` | 9.0.10 | Xtreme Download Manager: download accelerator and video downloader |
+| `xdm-app` | 9.0.12 | Xtreme Download Manager: download accelerator and video downloader |
 
 ## Resumen en español
 
