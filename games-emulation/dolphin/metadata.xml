@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>juanpedro@tuta.io</email>
+		<name>Juan Pedro</name>
+	</maintainer>
+	<use>
+		<flag name="discord">Muestra el juego actual en Discord (Rich Presence)</flag>
+		<flag name="evdev">Backend de mandos evdev</flag>
+		<flag name="ffmpeg">Codifica los volcados de fotogramas con FFmpeg</flag>
+		<flag name="gui">Interfaz gráfica en Qt 6 (si no, solo dolphin-emu-nogui)</flag>
+		<flag name="mgba">Emulación de mandos GBA con mGBA (incluido)</flag>
+		<flag name="retroachievements">Integración con retroachievements.org</flag>
+		<flag name="sdl">Mandos genéricos a través de SDL3</flag>
+		<flag name="upnp">Apertura automática de puertos por UPnP para el juego en red</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dolphin-emu/dolphin</remote-id>
+		<bugs-to>https://bugs.dolphin-emu.org/</bugs-to>
+	</upstream>
+</pkgmetadata>
