@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="cubeb">Enable the cubeb audio backend</flag>
+		<flag name="ffmpeg">Enable video and audio dumping through <pkg>media-video/ffmpeg-compat</pkg> (FFmpeg 7.x)</flag>
 		<flag name="room">Build the multiplayer room server, also as a standalone binary</flag>
 	</use>
 	<upstream>
