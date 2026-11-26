@@ -120,6 +120,20 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+# Lista "nombre repo commit" de cada FetchContent_Declare de 3rdparty/CMakeLists.txt.
+# Upstream renombra a veces las dependencias (zarchive_source -> zarchive_reader2),
+# así que los nombres se leen siempre de ahí y no se fijan en el ebuild.
+_kyty_fetch_deps() {
+	awk '
+		/FetchContent_Declare\(/ { d=1; n=""; r=""; t="";
+			split($0, a, "("); if (a[2] != "") { split(a[2], b, " "); n=b[1] }; next }
+		d && n == "" && NF { n=$1 }
+		d && $1 == "GIT_REPOSITORY" { r=$2 }
+		d && $1 == "GIT_TAG" { t=$2 }
+		d && /\)/ && !/\(/ { if (n != "" && r != "" && t != "") print n, r, t; d=0 }
+	' "${S}"/3rdparty/CMakeLists.txt || die
+}
+
 src_unpack() {
 	git-r3_src_unpack
 
@@ -129,14 +143,7 @@ src_unpack() {
 	if [[ ! ${EVCS_OFFLINE} ]]; then
 		while read -r name repo tag; do
 			_kyty_git_commit "${repo}" "${tag}" "${WORKDIR}/_deps/${name}-src"
-		done < <(awk '
-			/FetchContent_Declare\(/ { d=1; n=""; r=""; t="";
-				split($0, a, "("); if (a[2] != "") { split(a[2], b, " "); n=b[1] }; next }
-			d && n == "" && NF { n=$1 }
-			d && $1 == "GIT_REPOSITORY" { r=$2 }
-			d && $1 == "GIT_TAG" { t=$2 }
-			d && /\)/ && !/\(/ { if (n != "" && r != "" && t != "") print n, r, t; d=0 }
-		' "${S}"/3rdparty/CMakeLists.txt)
+		done < <(_kyty_fetch_deps)
 	fi
 
 	# FFmpeg estático precompilado (shadps4 ext-ffmpeg-core), ligado al commit
@@ -152,8 +159,11 @@ src_unpack() {
 
 src_prepare() {
 	# Con FETCHCONTENT_SOURCE_DIR_* no se ejecuta PATCH_COMMAND (ZArchive usa CRLF).
-	einfo "Aplicando zarchive-reader.patch a ZArchive"
-	git -C "${WORKDIR}/_deps/zarchive_source-src" apply --ignore-whitespace \
+	local zar
+	zar=$(_kyty_fetch_deps | awk '$2 ~ /ZArchive/ { print $1; exit }')
+	[[ -n ${zar} ]] || die "No encuentro ZArchive en 3rdparty/CMakeLists.txt"
+	einfo "Aplicando zarchive-reader.patch a ZArchive (${zar})"
+	git -C "${WORKDIR}/_deps/${zar}-src" apply --ignore-whitespace \
 		"${S}/3rdparty/patches/zarchive-reader.patch" || die
 
 	# FFmpeg ya descargado y descomprimido: que CMake no lo intente.
@@ -194,13 +204,13 @@ src_configure() {
 		-DCMAKE_CXX_COMPILER_LAUNCHER=
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DFETCHCONTENT_BASE_DIR="${WORKDIR}/_deps"
-		-DFETCHCONTENT_SOURCE_DIR_XBYAK="${WORKDIR}/_deps/xbyak-src"
-		-DFETCHCONTENT_SOURCE_DIR_ZYDIS="${WORKDIR}/_deps/zydis-src"
-		-DFETCHCONTENT_SOURCE_DIR_ZSTD="${WORKDIR}/_deps/zstd-src"
-		-DFETCHCONTENT_SOURCE_DIR_ZARCHIVE_SOURCE="${WORKDIR}/_deps/zarchive_source-src"
-		-DFETCHCONTENT_SOURCE_DIR_OPUS="${WORKDIR}/_deps/opus-src"
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
+	# Cada dependencia de FetchContent, con el nombre que use upstream ahora
+	local name repo tag
+	while read -r name repo tag; do
+		mycmakeargs+=( -DFETCHCONTENT_SOURCE_DIR_${name^^}="${WORKDIR}/_deps/${name}-src" )
+	done < <(_kyty_fetch_deps)
 	# El perfil PGO que usa el paquete oficial de Linux.
 	use pgo && mycmakeargs+=( -DKYTY_PGO_USE="${S}/tools/pgo/kyty-linux.profdata" )
 
